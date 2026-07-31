@@ -3,5 +3,5 @@
   publish = "web-nomad-bilingual"
 
 [functions]
-  directory = "web-nomad-bilingual/netlify/functions"
+  directory = "netlify/functions"
   node_bundler = "esbuild"
