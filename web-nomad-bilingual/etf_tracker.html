@@ -343,40 +343,33 @@ const HYPER   = ['MSFT','AMZN','GOOGL','META'];
 const ALL     = [...BIOTECH,...HYPER,'USO'];
 const NAMES   = {GILD:'Gilead Sciences',VRTX:'Vertex Pharma',AMGN:'Amgen',BIIB:'Biogen',MRNA:'Moderna',LLY:'Eli Lilly',JNJ:'Johnson & Johnson',ABBV:'AbbVie',MRK:'Merck',UNH:'UnitedHealth',ISRG:'Intuitive Surgical',TEM:'Tempus AI',MSFT:'Microsoft',AMZN:'Amazon',GOOGL:'Alphabet',META:'Meta',USO:'US Oil Fund'};
 const BASE    = {GILD:126.34,VRTX:496.73,AMGN:362.12,BIIB:216.06,MRNA:70.03,LLY:1199.43,JNJ:253.97,ABBV:251.64,MRK:128.5,UNH:415.63,ISRG:397.68,TEM:57.93,MSFT:373.02,AMZN:238.34,GOOGL:357.37,META:563.29,USO:106.44};
-const HIST_BASE = {"GILD": [["2026-06-30", 126.34], ["2026-07-01", 125.97], ["2026-07-02", 131.27], ["2026-07-06", 129.61]], "VRTX": [["2026-06-30", 496.73], ["2026-07-01", 498.01], ["2026-07-02", 528.04], ["2026-07-06", 529.59]], "AMGN": [["2026-06-30", 362.12], ["2026-07-01", 361.33], ["2026-07-02", 374.15], ["2026-07-06", 366.44]], "BIIB": [["2026-06-30", 216.06], ["2026-07-01", 209.74], ["2026-07-02", 216.12], ["2026-07-06", 208.46]], "MRNA": [["2026-06-30", 70.03], ["2026-07-01", 72.5], ["2026-07-02", 79.76], ["2026-07-06", 81.8]], "LLY": [["2026-06-30", 1199.43], ["2026-07-01", 1191.74], ["2026-07-02", 1213.91], ["2026-07-06", 1200.06]], "JNJ": [["2026-06-30", 253.97], ["2026-07-01", 253.98], ["2026-07-02", 263.04], ["2026-07-06", 259.33]], "ABBV": [["2026-06-30", 251.64], ["2026-07-01", 251.06], ["2026-07-02", 261.07], ["2026-07-06", 254.76]], "MRK": [["2026-06-30", 128.5], ["2026-07-01", 129.56], ["2026-07-02", 132.27], ["2026-07-06", 132.87]], "UNH": [["2026-06-30", 415.63], ["2026-07-01", 426.54], ["2026-07-02", 425.36], ["2026-07-06", 417.99]], "ISRG": [["2026-06-30", 397.68], ["2026-07-01", 402.38], ["2026-07-02", 426.01], ["2026-07-06", 432.83]], "TEM": [["2026-06-30", 57.93], ["2026-07-01", 61.6], ["2026-07-02", 60.27], ["2026-07-06", 60.7]], "MSFT": [["2026-06-30", 373.02], ["2026-07-01", 384.28], ["2026-07-02", 393.98], ["2026-07-06", 393.62]], "AMZN": [["2026-06-30", 238.34], ["2026-07-01", 242.67], ["2026-07-02", 248.67], ["2026-07-06", 248.0]], "GOOGL": [["2026-06-30", 357.37], ["2026-07-01", 359.91], ["2026-07-02", 368.87], ["2026-07-06", 369.18]], "META": [["2026-06-30", 563.29], ["2026-07-01", 582.9], ["2026-07-02", 608.32], ["2026-07-06", 610.03]], "USO": [["2026-06-30", 106.44], ["2026-07-01", 103.27], ["2026-07-02", 103.94], ["2026-07-06", 104.37]]};
-const HKEY = 'etf_today_v3';
+// Historial real: se lee de Supabase (tabla etf_daily_closes), no queda pegado a un puñado de fechas hardcodeadas.
+const SUPABASE_URL     = 'https://mtdezblfhjiuvkleekbz.supabase.co';
+const SUPABASE_ANON_KEY = 'sb_publishable_fA7oaY8dUrNXuL3Xz8uhUw_fU9tTHah';
+
 let hist = {}, chartInst = null;
 
 const sleep = ms => new Promise(r=>setTimeout(r,ms));
 const fmt   = n  => (n>=0?'+':'')+n.toFixed(2)+'%';
 const cls   = n  => n>=0?'pos':'neg';
 
-function initHist() {
-  ALL.forEach(t => {
-    hist[t] = (HIST_BASE[t]||[]).map(([d,c])=>({date:d,close:c}));
-  });
+async function initHist() {
+  ALL.forEach(t => { hist[t] = []; });
   try {
-    const saved = JSON.parse(sessionStorage.getItem(HKEY)||'{}');
-    Object.entries(saved).forEach(([t,entries]) => {
-      entries.forEach(({date,close}) => {
-        const last = hist[t]?.[hist[t].length-1];
-        if(!last || last.date < date) hist[t].push({date,close});
-      });
+    const r = await fetch(
+      `${SUPABASE_URL}/rest/v1/etf_daily_closes?select=date,ticker,close&order=date.asc`,
+      { headers: { apikey: SUPABASE_ANON_KEY, Authorization: `Bearer ${SUPABASE_ANON_KEY}` } }
+    );
+    const rows = await r.json();
+    rows.forEach(({date,ticker,close}) => {
+      if (hist[ticker]) hist[ticker].push({date, close:+close});
     });
-  } catch(e){}
+  } catch(e) {
+    console.error('No se pudo leer el histórico de Supabase', e);
+  }
 }
-
-function saveToday() {
-  try {
-    const today = new Date().toISOString().slice(0,10);
-    const saved = {};
-    ALL.forEach(t => {
-      const e = (hist[t]||[]).filter(d=>d.date>=today);
-      if(e.length) saved[t] = e;
-    });
-    sessionStorage.setItem(HKEY, JSON.stringify(saved));
-  } catch(e){}
-}
+// Nota: ya no hace falta saveToday() — el guardado diario lo hace la Netlify Scheduled Function
+// del lado del servidor (netlify/functions/save-daily-close.js), no el navegador del visitante.
 
 async function getQuote(t) {
   const r = await fetch(`https://finnhub.io/api/v1/quote?symbol=${t}&token=${KEY}`,{signal:AbortSignal.timeout(6000)});
@@ -489,7 +482,6 @@ async function refresh() {
     }catch(e){ quotes[t]={}; }
     if(i<ALL.length-1) await sleep(150);
   }
-  saveToday();
   window.lastQuotes = quotes;
   updateDisplay(quotes);
   scheduleRefresh();
@@ -501,7 +493,7 @@ async function loadData() {
   document.getElementById('overlay').style.display='flex';
   document.getElementById('omsg').textContent= isEN?'Updating...':'Actualizando...';
   document.getElementById('osub').textContent='Nomad Capital · ETF Tracker';
-  initHist();
+  await initHist();
   updateDisplay({});
   await refresh();
 }
