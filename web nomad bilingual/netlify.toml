@@ -1,7 +1,0 @@
-[build]
-  base = "web nomad bilingual"
-  publish = "web nomad bilingual"
-
-[functions]
-  directory = "web nomad bilingual/netlify/functions"
-  node_bundler = "esbuild"
