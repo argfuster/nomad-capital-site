@@ -14,6 +14,10 @@ const FINNHUB_KEY   = process.env.FINNHUB_KEY;
 const SUPABASE_URL  = process.env.SUPABASE_URL;
 const SUPABASE_KEY  = process.env.SUPABASE_SERVICE_KEY; // service_role key, NUNCA la anon/public
 
+console.log("DIAG SUPABASE_URL:", JSON.stringify(SUPABASE_URL));
+console.log("DIAG SUPABASE_URL length:", (SUPABASE_URL||"").length);
+console.log("DIAG SUPABASE_KEY presente:", !!SUPABASE_KEY, "length:", (SUPABASE_KEY||"").length);
+
 const supabase = createClient(SUPABASE_URL, SUPABASE_KEY);
 
 async function getQuote(ticker) {
