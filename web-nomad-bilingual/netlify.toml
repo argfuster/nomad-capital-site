@@ -1,6 +1,5 @@
 [build]
-  base = "web-nomad-bilingual"
-  publish = "web-nomad-bilingual"
+  publish = "."
 
 [functions]
   directory = "netlify/functions"
