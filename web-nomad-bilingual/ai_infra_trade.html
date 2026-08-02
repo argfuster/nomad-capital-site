@@ -15,13 +15,14 @@
   --serif:  'Cormorant Garamond', Georgia, serif; --sans: 'Outfit', sans-serif;
   --pos:    #3D6B52; --neg:    #8B3A3A;
 }
+html { scroll-behavior: smooth; }
 body { background: var(--bg); color: var(--ink); font-family: var(--sans); font-weight: 300; }
 nav { position: fixed; top: 0; left: 0; right: 0; z-index: 100; display: flex; align-items: center; justify-content: space-between; padding: 1.4rem 4rem; background: rgba(43,58,92,0.97); backdrop-filter: blur(12px); border-bottom: 1px solid rgba(232,213,163,0.15); }
 .nav-logo { display: flex; align-items: center; gap: 12px; text-decoration: none; }
 .nav-logo img { height: 22px; }
 .nav-links { display: flex; align-items: center; gap: 2rem; }
 .nav-links a { font-size: 0.72rem; letter-spacing: 0.1em; text-transform: uppercase; color: rgba(232,213,163,0.6); text-decoration: none; transition: color 0.2s; }
-.nav-links a:hover { color: var(--cream); }
+.nav-links a:hover, .nav-links a.active { color: var(--cream); }
 .lang-btn { font-family: var(--sans); font-size: 0.72rem; font-weight: 500; letter-spacing: 0.14em; text-transform: uppercase; border: 1px solid rgba(232,213,163,0.35); color: var(--cream); padding: 0.45rem 1rem; background: transparent; cursor: pointer; transition: all 0.2s; display: flex; align-items: center; gap: 6px; }
 .lang-btn:hover { background: rgba(232,213,163,0.1); }
 .lang-btn .lang-active { color: var(--cream); }
@@ -35,20 +36,32 @@ nav { position: fixed; top: 0; left: 0; right: 0; z-index: 100; display: flex; a
 .page-hero h1 em { font-style: italic; color: var(--cream); }
 .page-hero-sub { font-size: 0.85rem; color: rgba(232,213,163,0.5); line-height: 1.7; max-width: 640px; margin-bottom: 1.5rem; }
 .date-range { font-size: 0.75rem; color: rgba(232,213,163,0.4); letter-spacing: 0.05em; }
-.kpi-strip { display: grid; grid-template-columns: 1fr; gap: 1px; background: rgba(232,213,163,0.08); border-bottom: 1px solid rgba(232,213,163,0.08); }
-.kpi-block { background: rgba(61,107,82,0.15); padding: 2.5rem 3rem; }
+.kpi-strip { display: grid; grid-template-columns: repeat(4,1fr); gap: 1px; background: rgba(232,213,163,0.08); border-bottom: 1px solid rgba(232,213,163,0.08); }
+.kpi-block { background: rgba(61,107,82,0.15); padding: 2.5rem 2.5rem; }
+.kpi-block.main { background: rgba(61,107,82,0.25); }
 .kpi-label { font-size: 0.62rem; letter-spacing: 0.18em; text-transform: uppercase; color: rgba(30,42,69,0.6); margin-bottom: 0.75rem; }
-.kpi-value { font-family: var(--serif); font-size: 3.5rem; font-weight: 300; color: var(--ink); line-height: 1; }
+.kpi-value { font-family: var(--serif); font-size: 2.6rem; font-weight: 300; color: var(--ink); line-height: 1; }
+.kpi-block.main .kpi-value { font-size: 3.2rem; }
 .kpi-sub { font-size: 0.7rem; color: rgba(30,42,69,0.5); margin-top: 0.5rem; letter-spacing: 0.05em; }
 .pos { color: #3D6B52 !important; }
+.neg { color: #8B3A3A !important; }
 main { max-width: 1400px; margin: 0 auto; padding: 4rem; }
 .section-eyebrow { font-size: 0.62rem; letter-spacing: 0.2em; text-transform: uppercase; color: var(--sage); margin-bottom: 1.5rem; display: flex; align-items: center; gap: 0.75rem; }
 .section-eyebrow::before { content: '//'; color: var(--muted); margin-right: 0.25rem; }
 .chart-card { background: white; border: 1px solid var(--border); padding: 2.5rem; margin-bottom: 3rem; }
-.chart-header { display: flex; align-items: flex-start; justify-content: space-between; margin-bottom: 2rem; }
+.chart-header { display: flex; align-items: flex-start; justify-content: space-between; margin-bottom: 2rem; flex-wrap: wrap; gap: 1rem; }
 .chart-title { font-family: var(--serif); font-size: 1.6rem; font-weight: 400; color: var(--ink); }
 .chart-title em { font-style: italic; color: var(--sage); }
-.chart-wrap { position: relative; width: 100%; height: 300px; }
+.chart-wrap { position: relative; width: 100%; height: 340px; }
+.legend { display: flex; gap: 1.5rem; flex-wrap: wrap; }
+.leg { display: flex; align-items: center; gap: 0.5rem; font-size: 0.72rem; color: var(--muted); letter-spacing: 0.03em; }
+.leg-dot { width: 10px; height: 10px; border-radius: 50%; }
+.bench-table { width: 100%; border-collapse: collapse; background: white; border: 1px solid var(--border); margin-bottom: 3rem; }
+.bench-table th { text-align: left; font-size: 0.62rem; letter-spacing: 0.12em; text-transform: uppercase; color: var(--muted); padding: 1rem 1.5rem; border-bottom: 1px solid var(--border); background: var(--off); }
+.bench-table td { padding: 1.1rem 1.5rem; border-bottom: 1px solid var(--border); font-family: var(--serif); font-size: 1.05rem; color: var(--ink); }
+.bench-table tr:last-child td { border-bottom: none; }
+.bench-table td.label { font-family: var(--sans); font-size: 0.82rem; letter-spacing: 0.03em; color: var(--ink); }
+.bench-table tr.highlight td { background: rgba(61,107,82,0.06); }
 .disclaimer { font-size: 0.72rem; color: var(--muted); line-height: 1.7; max-width: 800px; margin-top: 2rem; padding-top: 1.5rem; border-top: 1px solid var(--border); }
 footer { background: var(--navy2); border-top: 1px solid rgba(232,213,163,0.08); padding: 3rem 4rem; margin-top: 4rem; display: flex; justify-content: space-between; align-items: center; }
 .footer-left { font-family: var(--serif); font-size: 1rem; color: rgba(232,213,163,0.4); font-weight: 300; }
@@ -66,15 +79,20 @@ footer { background: var(--navy2); border-top: 1px solid rgba(232,213,163,0.08);
   .page-hero-sub { font-size: 0.8rem; max-width: 100%; }
   .date-range { font-size: 0.68rem; }
 
-  .kpi-strip { grid-template-columns: 1fr; }
+  .kpi-strip { grid-template-columns: 1fr 1fr; }
   .kpi-block { padding: 1.5rem 1.2rem; }
-  .kpi-value { font-size: 2.4rem; }
+  .kpi-block.main { grid-column: 1 / -1; }
+  .kpi-value { font-size: 2rem; }
+  .kpi-block.main .kpi-value { font-size: 2.4rem; }
 
   main { padding: 2rem 1.2rem; }
   .chart-card { padding: 1.5rem 1.2rem; }
-  .chart-header { flex-direction: column; align-items: flex-start; gap: 1rem; }
   .chart-title { font-size: 1.25rem; }
   .chart-wrap { height: 260px; }
+  .legend { gap: 1rem; }
+
+  .bench-table { display: block; overflow-x: auto; white-space: nowrap; }
+  .bench-table th, .bench-table td { padding: 0.8rem 1rem; }
   .disclaimer { font-size: 0.68rem; }
 
   footer { flex-direction: column; gap: 1rem; text-align: center; padding: 2rem 1.2rem; }
@@ -101,7 +119,7 @@ footer { background: var(--navy2); border-top: 1px solid rgba(232,213,163,0.08);
 
 <div class="page-hero">
   <div class="status-badge"><span class="status-dot"></span><span data-es="Trade cerrado">Trade cerrado</span><span data-en="Closed trade" style="display:none">Closed trade</span></div>
-  <h1>AI Infrastructure <em>& Power</em></h1>
+  <h1><em>AI Infrastructure</em><br>&amp; Power</h1>
   <p class="page-hero-sub">
     <span data-es="Canasta equal weight de semiconductores, hyperscalers y generación eléctrica, con rebalanceos mensuales a equal weight. Tesis: la expansión de infraestructura de IA requiere simultáneamente cómputo (semis) y energía (nuclear, gas, cobre) — el cuello de botella se traslada de un sector a otro a medida que avanza el ciclo.">Canasta equal weight de semiconductores, hyperscalers y generación eléctrica, con rebalanceos mensuales a equal weight. Tesis: la expansión de infraestructura de IA requiere simultáneamente cómputo (semis) y energía (nuclear, gas, cobre) — el cuello de botella se traslada de un sector a otro a medida que avanza el ciclo.</span>
     <span data-en="Equal-weight basket of semiconductors, hyperscalers, and power generation, rebalanced monthly to equal weight. Thesis: AI infrastructure buildout requires compute (semis) and energy (nuclear, gas, copper) simultaneously — the bottleneck shifts from one sector to another as the cycle advances." style="display:none">Equal-weight basket of semiconductors, hyperscalers, and power generation, rebalanced monthly to equal weight. Thesis: AI infrastructure buildout requires compute (semis) and energy (nuclear, gas, copper) simultaneously — the bottleneck shifts from one sector to another as the cycle advances.</span>
@@ -113,25 +131,89 @@ footer { background: var(--navy2); border-top: 1px solid rgba(232,213,163,0.08);
 </div>
 
 <div class="kpi-strip">
-  <div class="kpi-block">
+  <div class="kpi-block main">
     <div class="kpi-label"><span data-es="Rendimiento total de la canasta">Rendimiento total de la canasta</span><span data-en="Total basket return" style="display:none">Total basket return</span></div>
     <div class="kpi-value pos">+32.67%</div>
-    <div class="kpi-sub"><span data-es="17 posiciones equal weight, rebalanceadas mensualmente · resultado antes de comisiones de broker">17 posiciones equal weight, rebalanceadas mensualmente · resultado antes de comisiones de broker</span><span data-en="17 equal-weight positions, rebalanced monthly · result before broker commissions" style="display:none">17 equal-weight positions, rebalanced monthly · result before broker commissions</span></div>
+    <div class="kpi-sub"><span data-es="17 posiciones · rebalanceo mensual equal weight">17 posiciones · rebalanceo mensual equal weight</span><span data-en="17 positions · monthly equal-weight rebalancing" style="display:none">17 positions · monthly equal-weight rebalancing</span></div>
+  </div>
+  <div class="kpi-block">
+    <div class="kpi-label"><span data-es="Mejor posición">Mejor posición</span><span data-en="Best position" style="display:none">Best position</span></div>
+    <div class="kpi-value pos">INTC +171.9%</div>
+    <div class="kpi-sub"><span data-es="Construcción inicial, sin rebalanceo">Construcción inicial, sin rebalanceo</span><span data-en="Initial construction, no rebalancing" style="display:none">Initial construction, no rebalancing</span></div>
+  </div>
+  <div class="kpi-block">
+    <div class="kpi-label"><span data-es="Peor posición">Peor posición</span><span data-en="Worst position" style="display:none">Worst position</span></div>
+    <div class="kpi-value neg">OKLO −28.7%</div>
+    <div class="kpi-sub"><span data-es="Construcción inicial, sin rebalanceo">Construcción inicial, sin rebalanceo</span><span data-en="Initial construction, no rebalancing" style="display:none">Initial construction, no rebalancing</span></div>
+  </div>
+  <div class="kpi-block">
+    <div class="kpi-label">Sharpe ratio <span style="font-size:0.55rem">(rf=0)</span></div>
+    <div class="kpi-value pos">2.01</div>
+    <div class="kpi-sub"><span data-es="vs 1.48 S&P 500 · 1.83 Nasdaq-100">vs 1.48 S&amp;P 500 · 1.83 Nasdaq-100</span><span data-en="vs 1.48 S&P 500 · 1.83 Nasdaq-100" style="display:none">vs 1.48 S&amp;P 500 · 1.83 Nasdaq-100</span></div>
   </div>
 </div>
 
 <main>
-  <div class="section-eyebrow"><span data-es="Evolución del índice">Evolución del índice</span><span data-en="Index performance" style="display:none">Index performance</span></div>
+  <div class="section-eyebrow"><span data-es="Evolución del índice vs. benchmarks">Evolución del índice vs. benchmarks</span><span data-en="Index performance vs. benchmarks" style="display:none">Index performance vs. benchmarks</span></div>
   <div class="chart-card">
     <div class="chart-header">
-      <div class="chart-title"><span data-es="Performance histórica">Performance histórica</span><span data-en="Historical performance" style="display:none">Historical performance</span> <em>(base 100 = 1/12/2025)</em></div>
+      <div class="chart-title"><span data-es="Performance diaria">Performance diaria</span><span data-en="Daily performance" style="display:none">Daily performance</span> <em>(base 100 = 1/12/2025)</em></div>
+      <div class="legend">
+        <div class="leg"><div class="leg-dot" style="background:#4A8B6A"></div><span data-es="Cartera">Cartera</span><span data-en="Portfolio" style="display:none">Portfolio</span></div>
+        <div class="leg"><div class="leg-dot" style="background:#2B3A5C"></div>S&amp;P 500</div>
+        <div class="leg"><div class="leg-dot" style="background:#C9A96E"></div>Nasdaq-100</div>
+      </div>
     </div>
     <div class="chart-wrap"><canvas id="chart"></canvas></div>
   </div>
 
+  <div class="section-eyebrow"><span data-es="Riesgo y Sharpe ratio">Riesgo y Sharpe ratio</span><span data-en="Risk and Sharpe ratio" style="display:none">Risk and Sharpe ratio</span></div>
+  <table class="bench-table">
+    <thead>
+      <tr>
+        <th><span data-es="Métrica">Métrica</span><span data-en="Metric" style="display:none">Metric</span></th>
+        <th><span data-es="Cartera">Cartera</span><span data-en="Portfolio" style="display:none">Portfolio</span></th>
+        <th>S&amp;P 500</th>
+        <th>Nasdaq-100</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr class="highlight">
+        <td class="label"><span data-es="Retorno total">Retorno total</span><span data-en="Total return" style="display:none">Total return</span></td>
+        <td class="pos">+32.67%</td>
+        <td class="pos">+8.75%</td>
+        <td class="pos">+14.92%</td>
+      </tr>
+      <tr>
+        <td class="label"><span data-es="Volatilidad anualizada">Volatilidad anualizada</span><span data-en="Annualized volatility" style="display:none">Annualized volatility</span></td>
+        <td>35.32%</td>
+        <td>13.15%</td>
+        <td>17.71%</td>
+      </tr>
+      <tr class="highlight">
+        <td class="label">Sharpe ratio <span style="color:var(--muted);font-size:0.7rem">(rf=0)</span></td>
+        <td class="pos">2.01</td>
+        <td>1.48</td>
+        <td>1.83</td>
+      </tr>
+      <tr>
+        <td class="label">Sharpe ratio <span style="color:var(--muted);font-size:0.7rem">(rf≈4.3% a.)</span></td>
+        <td class="pos">1.89</td>
+        <td>1.15</td>
+        <td>1.58</td>
+      </tr>
+      <tr class="highlight">
+        <td class="label"><span data-es="Máximo drawdown">Máximo drawdown</span><span data-en="Maximum drawdown" style="display:none">Maximum drawdown</span></td>
+        <td>-13.79%</td>
+        <td>-9.10%</td>
+        <td>-11.80%</td>
+      </tr>
+    </tbody>
+  </table>
+
   <p class="disclaimer">
-    <span data-es="Rendimientos pasados no garantizan resultados futuros. La información de performance mostrada corresponde a una operación efectivamente implementada en cuentas de clientes de Nomad Capital, comunicada oportunamente al momento de su ejecución y cierre. El rendimiento mostrado es antes de comisiones de broker y otros costos de transacción. El índice se reconstituye a equal weight al cierre de cada mes. Precios de cierre ajustados, fuente Yahoo Finance.">Rendimientos pasados no garantizan resultados futuros. La información de performance mostrada corresponde a una operación efectivamente implementada en cuentas de clientes de Nomad Capital, comunicada oportunamente al momento de su ejecución y cierre. El rendimiento mostrado es antes de comisiones de broker y otros costos de transacción. El índice se reconstituye a equal weight al cierre de cada mes. Precios de cierre ajustados, fuente Yahoo Finance.</span>
-    <span data-en="Past performance does not guarantee future results. The performance information shown corresponds to a trade actually implemented in Nomad Capital client accounts, communicated in a timely manner at the time of its execution and closing. The performance shown is before broker commissions and other transaction costs. The index is reconstituted to equal weight at the close of each month. Adjusted closing prices, source Yahoo Finance." style="display:none">Past performance does not guarantee future results. The performance information shown corresponds to a trade actually implemented in Nomad Capital client accounts, communicated in a timely manner at the time of its execution and closing. The performance shown is before broker commissions and other transaction costs. The index is reconstituted to equal weight at the close of each month. Adjusted closing prices, source Yahoo Finance.</span>
+    <span data-es="Rendimientos pasados no garantizan resultados futuros. El retorno total (+32.67%) corresponde al resultado efectivamente implementado en cuentas de clientes de Nomad Capital, con rebalanceo mensual a equal weight, comunicado oportunamente al momento de su ejecución y cierre. Por consistencia metodológica con los benchmarks, la volatilidad, el Sharpe ratio, el drawdown máximo y la curva diaria del gráfico se calculan sobre la construcción inicial equal weight (sin rebalanceo intermedio), con precios de cierre diarios (Close, no Adj Close) de Yahoo Finance, 1/12/2025–15/5/2026. El Sharpe ratio se anualizó sobre retornos diarios (√252); se muestra con tasa libre de riesgo 0% y con una aproximación de 4.3% anual (T-Bill de corto plazo). Los benchmarks S&P 500 (^GSPC) y Nasdaq-100 (^NDX) están rebasados a 100 en la misma fecha de inicio y calculados con la misma metodología diaria.">Rendimientos pasados no garantizan resultados futuros. El retorno total (+32.67%) corresponde al resultado efectivamente implementado en cuentas de clientes de Nomad Capital, con rebalanceo mensual a equal weight, comunicado oportunamente al momento de su ejecución y cierre. Por consistencia metodológica con los benchmarks, la volatilidad, el Sharpe ratio, el drawdown máximo y la curva diaria del gráfico se calculan sobre la construcción inicial equal weight (sin rebalanceo intermedio), con precios de cierre diarios (Close, no Adj Close) de Yahoo Finance, 1/12/2025–15/5/2026. El Sharpe ratio se anualizó sobre retornos diarios (√252); se muestra con tasa libre de riesgo 0% y con una aproximación de 4.3% anual (T-Bill de corto plazo). Los benchmarks S&P 500 (^GSPC) y Nasdaq-100 (^NDX) están rebasados a 100 en la misma fecha de inicio y calculados con la misma metodología diaria.</span>
+    <span data-en="Past performance does not guarantee future results. The total return (+32.67%) corresponds to the result actually implemented in Nomad Capital client accounts, with monthly rebalancing to equal weight, communicated in a timely manner at the time of its execution and closing. For methodological consistency with the benchmarks, volatility, the Sharpe ratio, maximum drawdown, and the daily chart curve are calculated on the initial equal-weight construction (without intermediate rebalancing), using daily closing prices (Close, not Adj Close) from Yahoo Finance, 12/1/2025-5/15/2026. The Sharpe ratio was annualized on daily returns (√252); shown with a 0% risk-free rate and with an approximation of 4.3% annual (short-term T-Bill). The S&P 500 (^GSPC) and Nasdaq-100 (^NDX) benchmarks are rebased to 100 on the same start date and calculated with the same daily methodology." style="display:none">Past performance does not guarantee future results. The total return (+32.67%) corresponds to the result actually implemented in Nomad Capital client accounts, with monthly rebalancing to equal weight, communicated in a timely manner at the time of its execution and closing. For methodological consistency with the benchmarks, volatility, the Sharpe ratio, maximum drawdown, and the daily chart curve are calculated on the initial equal-weight construction (without intermediate rebalancing), using daily closing prices (Close, not Adj Close) from Yahoo Finance, 12/1/2025-5/15/2026. The Sharpe ratio was annualized on daily returns (√252); shown with a 0% risk-free rate and with an approximation of 4.3% annual (short-term T-Bill). The S&P 500 (^GSPC) and Nasdaq-100 (^NDX) benchmarks are rebased to 100 on the same start date and calculated with the same daily methodology.</span>
   </p>
 </main>
 
@@ -144,19 +226,38 @@ footer { background: var(--navy2); border-top: 1px solid rgba(232,213,163,0.08);
 </footer>
 
 <script>
-const rebalSeries = [["2025-12-01", 100], ["2025-12-04", 103.918], ["2025-12-09", 102.7], ["2025-12-12", 98.452], ["2025-12-17", 93.382], ["2025-12-22", 98.038], ["2025-12-26", 98.822], ["2025-12-31", 97.339], ["2026-01-06", 104.934], ["2026-01-09", 105.488], ["2026-01-14", 105.401], ["2026-01-20", 104.522], ["2026-01-23", 106.366], ["2026-01-28", 109.926], ["2026-02-02", 104.453], ["2026-02-05", 97.343], ["2026-02-10", 104.28], ["2026-02-13", 103.93], ["2026-02-19", 105.426], ["2026-02-24", 107.849], ["2026-02-27", 106.971], ["2026-03-04", 105.608], ["2026-03-09", 105.144], ["2026-03-12", 102.449], ["2026-03-17", 103.379], ["2026-03-20", 98.901], ["2026-03-25", 104.801], ["2026-03-30", 95.606], ["2026-04-02", 102.73], ["2026-04-08", 109.061], ["2026-04-13", 114.933], ["2026-04-16", 119.416], ["2026-04-21", 119.538], ["2026-04-24", 131.039], ["2026-04-29", 127.049], ["2026-05-04", 129.444], ["2026-05-07", 134.948], ["2026-05-12", 136.92], ["2026-05-15", 132.666]];
-const labels = rebalSeries.map(d => d[0].slice(5).replace('-','/'));
+const labels = ["12/01", "12/02", "12/03", "12/04", "12/05", "12/08", "12/09", "12/10", "12/11", "12/12", "12/15", "12/16", "12/17", "12/18", "12/19", "12/22", "12/23", "12/24", "12/26", "12/29", "12/30", "12/31", "01/02", "01/05", "01/06", "01/07", "01/08", "01/09", "01/12", "01/13", "01/14", "01/15", "01/16", "01/20", "01/21", "01/22", "01/23", "01/26", "01/27", "01/28", "01/29", "01/30", "02/02", "02/03", "02/04", "02/05", "02/06", "02/09", "02/10", "02/11", "02/12", "02/13", "02/17", "02/18", "02/19", "02/20", "02/23", "02/24", "02/25", "02/26", "02/27", "03/02", "03/03", "03/04", "03/05", "03/06", "03/09", "03/10", "03/11", "03/12", "03/13", "03/16", "03/17", "03/18", "03/19", "03/20", "03/23", "03/24", "03/25", "03/26", "03/27", "03/30", "03/31", "04/01", "04/02", "04/06", "04/07", "04/08", "04/09", "04/10", "04/13", "04/14", "04/15", "04/16", "04/17", "04/20", "04/21", "04/22", "04/23", "04/24", "04/27", "04/28", "04/29", "04/30", "05/01", "05/04", "05/05", "05/06", "05/07", "05/08", "05/11", "05/12", "05/13", "05/14", "05/15"];
+const portfolio = [100.0, 100.527, 101.914, 102.914, 101.958, 101.823, 101.708, 102.197, 102.188, 97.501, 96.238, 96.251, 92.48, 94.581, 96.461, 97.091, 98.033, 98.038, 97.867, 97.215, 97.025, 96.399, 100.284, 102.372, 103.782, 102.722, 100.79, 104.188, 104.884, 105.002, 104.33, 105.935, 105.718, 103.553, 106.296, 106.305, 105.443, 104.459, 106.962, 109.026, 107.653, 103.861, 103.884, 103.366, 98.277, 96.763, 101.777, 104.203, 103.358, 104.143, 101.769, 103.101, 103.697, 104.453, 104.647, 105.194, 104.52, 107.381, 109.194, 107.089, 106.312, 106.029, 102.215, 104.487, 103.045, 100.277, 103.491, 104.405, 103.997, 100.959, 99.855, 101.33, 101.784, 100.801, 100.568, 97.37, 99.795, 100.321, 103.213, 98.734, 97.269, 94.135, 99.434, 101.907, 101.45, 101.954, 102.322, 107.854, 109.291, 111.267, 113.579, 115.687, 116.479, 117.159, 118.894, 118.69, 117.547, 121.891, 122.507, 128.774, 127.766, 123.641, 124.911, 128.248, 128.653, 127.091, 130.536, 138.391, 133.653, 138.785, 140.468, 136.814, 138.072, 138.664, 132.67];
+const spx = [100.0, 100.246, 100.544, 100.653, 100.848, 100.497, 100.409, 101.087, 101.297, 100.217, 100.057, 99.818, 98.661, 99.444, 100.321, 100.967, 101.426, 101.753, 101.722, 101.367, 101.227, 100.482, 100.673, 101.313, 101.94, 101.59, 101.597, 102.255, 102.417, 102.218, 101.673, 101.935, 101.87, 99.769, 100.925, 101.478, 101.512, 102.02, 102.436, 102.428, 102.295, 101.855, 102.405, 101.544, 101.029, 99.791, 101.757, 102.234, 101.896, 101.891, 100.295, 100.346, 100.449, 101.008, 100.723, 101.422, 100.369, 101.137, 101.96, 101.413, 100.972, 101.013, 100.059, 100.835, 100.265, 98.934, 99.756, 99.543, 99.459, 97.945, 97.351, 98.338, 98.583, 97.241, 96.974, 95.506, 96.6, 96.238, 96.76, 95.076, 93.486, 93.117, 95.83, 96.517, 96.625, 97.053, 97.126, 99.562, 100.177, 100.063, 101.08, 102.272, 103.087, 103.356, 104.601, 104.352, 103.69, 104.775, 104.341, 105.173, 105.303, 104.788, 104.746, 105.818, 106.128, 105.697, 106.555, 108.11, 107.699, 108.606, 108.81, 108.636, 109.271, 110.108, 108.747];
+const ndx = [100.0, 100.841, 101.04, 100.942, 101.378, 101.125, 101.286, 101.711, 101.357, 99.423, 98.913, 99.172, 97.257, 98.724, 100.013, 100.469, 100.967, 101.236, 101.19, 100.721, 100.472, 99.633, 99.461, 100.231, 101.171, 101.227, 100.648, 101.671, 101.755, 101.575, 100.486, 100.806, 100.736, 98.598, 99.936, 100.693, 101.036, 101.461, 102.355, 102.683, 102.137, 100.827, 101.562, 99.983, 98.218, 96.866, 98.946, 99.705, 99.151, 99.441, 97.414, 97.593, 97.47, 98.248, 97.847, 98.697, 97.499, 98.557, 99.946, 98.783, 98.489, 98.618, 97.543, 99.017, 98.728, 97.239, 98.518, 98.475, 98.509, 96.807, 96.204, 97.287, 97.781, 96.379, 96.103, 94.299, 95.445, 94.711, 95.344, 93.072, 91.279, 90.571, 93.676, 94.78, 94.881, 95.46, 95.5, 98.265, 98.971, 99.106, 100.161, 101.97, 103.4, 103.907, 105.246, 104.922, 104.485, 106.291, 105.681, 107.737, 107.745, 106.653, 107.277, 108.323, 109.342, 109.111, 110.544, 112.849, 112.71, 115.358, 115.696, 114.686, 115.879, 116.72, 114.925];
 
 new Chart(document.getElementById('chart').getContext('2d'), {
   type: 'line',
   data: {
     labels,
-    datasets: [{
-      data: rebalSeries.map(d => d[1]),
-      borderColor: '#4A8B6A',
-      backgroundColor: 'rgba(74,139,106,0.08)',
-      borderWidth: 2, pointRadius: 0, pointHoverRadius: 5, fill: true, tension: 0.3
-    }]
+    datasets: [
+      {
+        label: 'Cartera',
+        data: portfolio,
+        borderColor: '#4A8B6A',
+        backgroundColor: 'rgba(74,139,106,0.08)',
+        borderWidth: 2.5, pointRadius: 0, pointHoverRadius: 5, fill: true, tension: 0.3
+      },
+      {
+        label: 'S&P 500',
+        data: spx,
+        borderColor: '#2B3A5C',
+        backgroundColor: 'transparent',
+        borderWidth: 1.5, pointRadius: 0, pointHoverRadius: 4, fill: false, tension: 0.3, borderDash: [4,3]
+      },
+      {
+        label: 'Nasdaq-100',
+        data: ndx,
+        borderColor: '#C9A96E',
+        backgroundColor: 'transparent',
+        borderWidth: 1.5, pointRadius: 0, pointHoverRadius: 4, fill: false, tension: 0.3, borderDash: [4,3]
+      }
+    ]
   },
   options: {
     responsive: true, maintainAspectRatio: false,
@@ -165,7 +266,7 @@ new Chart(document.getElementById('chart').getContext('2d'), {
       legend: { display: false },
       tooltip: {
         callbacks: {
-          label: c => `${window.currentLang==='en'?'Index':'Índice'}: ${c.parsed.y.toFixed(1)} (${(c.parsed.y-100)>=0?'+':''}${(c.parsed.y-100).toFixed(2)}%)`
+          label: c => `${c.dataset.label}: ${c.parsed.y.toFixed(1)} (${(c.parsed.y-100)>=0?'+':''}${(c.parsed.y-100).toFixed(2)}%)`
         }
       }
     },
