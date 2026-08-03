@@ -1,22 +1,26 @@
 // netlify/functions/save-daily-close.js
 // Corre sola todos los días de semana después del cierre de NYSE (16:00 ET)
-// y guarda el cierre de los 17 tickers en Supabase.
+// y guarda el cierre de los tickers en Supabase (tabla etf_daily_closes).
+//
+// ACTUALIZADO 3/8/2026: se sacó USO (cerró el trade Biotech+Hyperscalers+USO)
+// y se sumaron los 13 tickers de Semiconductores para la nueva idea
+// Biotech + Semiconductores + Hyperscalers (30/35/35).
 
 const { schedule } = require("@netlify/functions");
 const { createClient } = require("@supabase/supabase-js");
 
 const TICKERS = [
+  // Biotech · 30%
   "GILD","VRTX","AMGN","BIIB","MRNA","LLY","JNJ","ABBV","MRK","UNH","ISRG","TEM",
-  "MSFT","AMZN","GOOGL","META","USO"
+  // Semiconductores · 35% (nuevos)
+  "NVDA","AMD","INTC","QCOM","AVGO","TSM","ARM","ASML","LRCX","AMAT","MRVL","MU","TXN",
+  // Hyperscalers · 35%
+  "MSFT","AMZN","GOOGL","META"
 ];
 
 const FINNHUB_KEY   = process.env.FINNHUB_KEY;
 const SUPABASE_URL  = process.env.SUPABASE_URL;
-const SUPABASE_KEY  = process.env.SUPABASE_SERVICE_KEY; // service_role key, NUNCA la anon/public
-
-console.log("DIAG SUPABASE_URL:", JSON.stringify(SUPABASE_URL));
-console.log("DIAG SUPABASE_URL length:", (SUPABASE_URL||"").length);
-console.log("DIAG SUPABASE_KEY presente:", !!SUPABASE_KEY, "length:", (SUPABASE_KEY||"").length);
+const SUPABASE_KEY  = process.env.SUPABASE_SERVICE_KEY; // service_role/secret key, NUNCA la anon/publishable
 
 const supabase = createClient(SUPABASE_URL, SUPABASE_KEY);
 
@@ -28,8 +32,7 @@ async function getQuote(ticker) {
 }
 
 const handler = async () => {
-  // Fecha de NY (evita problemas de huso horario del servidor de Netlify, que corre en UTC)
-  const today = new Date().toLocaleDateString("en-CA", { timeZone: "America/New_York" }); // formato YYYY-MM-DD
+  const today = new Date().toLocaleDateString("en-CA", { timeZone: "America/New_York" }); // YYYY-MM-DD
 
   const rows = [];
   const errors = [];
