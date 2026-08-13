@@ -332,7 +332,9 @@ async function refresh() {
   document.getElementById('osub').textContent = 'Nomad Capital · Semis Tracker';
   try {
     const today = new Date().toISOString().slice(0,10);
-    for (const t of ALL) {
+    for (let i = 0; i < ALL.length; i++) {
+      const t = ALL[i];
+      document.getElementById('omsg').textContent = `${isEN?'Price':'Precio'} ${i+1}/${ALL.length} — ${t}`;
       try {
         const r = await fetch(`https://finnhub.io/api/v1/quote?symbol=${t}&token=${FINNHUB_KEY}`);
         const j = await r.json();
@@ -343,6 +345,7 @@ async function refresh() {
           else hist[t].push({ date: today, close: j.c });
         }
       } catch(e) { /* sigue con el resto */ }
+      if(i < ALL.length-1) await new Promise(res => setTimeout(res, 150)); // evitar rate limit de Finnhub
     }
     updateDisplay();
   } finally {
