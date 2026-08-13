@@ -206,7 +206,7 @@ footer { background: var(--navy2); border-top: 1px solid rgba(232,213,163,0.08);
 // ── Config ──────────────────────────────────────────────────────
 const SUPABASE_URL = 'https://mtdezblfhjiuvkleekbz.supabase.co';
 const SUPABASE_ANON_KEY = 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6Im10ZGV6YmxmaGppdXZrbGVla2J6Iiwicm9sZSI6ImFub24iLCJpYXQiOjE3NzU0MDk5MTMsImV4cCI6MjA5MDk4NTkxM30.hM7iStY98gZsSQzBUtdvTYlnMfRtDB8MEeMAUFoLpu4'; // publishable/anon key — pública por diseño
-const FINNHUB_KEY = 'd9maushr01qg1eud65vgd9maushr01qg1eud6600'; // misma key que ya usás en etf_tracker.html
+const FINNHUB_KEY = 'TU_FINNHUB_KEY_AQUI'; // misma key que ya usás en etf_tracker.html
 
 const BIOTECH = ['GILD','VRTX','AMGN','BIIB','MRNA','LLY','JNJ','ABBV','MRK','UNH','ISRG','TEM'];
 const SEMIS   = ['NVDA','AMD','INTC','QCOM','AVGO','TSM','ARM','ASML','LRCX','AMAT','MRVL','MU','TXN'];
@@ -287,7 +287,6 @@ function updateDisplay() {
       const p = quotes[t]?.price;
       return p ? 100*p/baseP[t] : null;
     }).filter(v => v !== null);
-    if(vals.length < tickers.length) console.warn('Faltan cotizaciones para:', tickers.filter(t => !quotes[t]?.price));
     return vals.length ? vals.reduce((a,b)=>a+b,0)/vals.length : null;
   }
   const lastBio = groupPct(BIOTECH), lastSemi = groupPct(SEMIS), lastHyp = groupPct(HYPER);
@@ -355,7 +354,6 @@ async function refresh() {
     const today = new Date().toISOString().slice(0,10);
     for (let i = 0; i < ALL.length; i++) {
       const t = ALL[i];
-      document.getElementById('omsg').textContent = `${isEN?'Price':'Precio'} ${i+1}/${ALL.length} — ${t}`;
       try {
         const r = await fetch(`https://finnhub.io/api/v1/quote?symbol=${t}&token=${FINNHUB_KEY}`);
         const j = await r.json();
