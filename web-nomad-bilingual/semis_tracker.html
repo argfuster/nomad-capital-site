@@ -279,7 +279,28 @@ function updateDisplay() {
   const { dates, bio, semi, hyp, blended } = buildIndexSeries();
   const labels = dates.map(d => d.slice(5).replace('-','/'));
 
-  const lastBio = bio[bio.length-1], lastSemi = semi[semi.length-1], lastHyp = hyp[hyp.length-1], lastBlend = blended[blended.length-1];
+  // KPIs: se calculan directo desde el precio actual de cada ticker (quotes) vs su base,
+  // NO desde el último punto del array histórico (evita arrastrar precios viejos si algún
+  // ticker no llegó a actualizarse ese día puntual en el gráfico).
+  function groupPct(tickers) {
+    const vals = tickers.map(t => {
+      const p = quotes[t]?.price;
+      return p ? 100*p/baseP[t] : null;
+    }).filter(v => v !== null);
+    if(vals.length < tickers.length) console.warn('Faltan cotizaciones para:', tickers.filter(t => !quotes[t]?.price));
+    return vals.length ? vals.reduce((a,b)=>a+b,0)/vals.length : null;
+  }
+  const lastBio = groupPct(BIOTECH), lastSemi = groupPct(SEMIS), lastHyp = groupPct(HYPER);
+  const lastBlend = (lastBio!=null && lastSemi!=null && lastHyp!=null) ? 0.30*lastBio + 0.35*lastSemi + 0.35*lastHyp : null;
+
+  // Sincronizar el último punto del gráfico con estos mismos valores confiables
+  const today = new Date().toISOString().slice(0,10);
+  if(dates.length && dates[dates.length-1] === today) {
+    bio[bio.length-1] = lastBio; semi[semi.length-1] = lastSemi; hyp[hyp.length-1] = lastHyp; blended[blended.length-1] = lastBlend;
+  } else if(lastBlend != null) {
+    dates.push(today); labels.push(today.slice(5).replace('-','/'));
+    bio.push(lastBio); semi.push(lastSemi); hyp.push(lastHyp); blended.push(lastBlend);
+  }
 
   document.getElementById('k-total').textContent = lastBlend!=null ? fmtPct(lastBlend-100) : '—';
   document.getElementById('k-total').className = 'kpi-value ' + (lastBlend>=100?'pos':'neg');
