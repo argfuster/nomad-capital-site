@@ -57,11 +57,6 @@ main { max-width: 1400px; margin: 0 auto; padding: 4rem; }
 .leg-dot { width: 10px; height: 10px; border-radius: 50%; }
 button.refresh-btn { font-family: var(--sans); font-size: 0.7rem; letter-spacing: 0.08em; text-transform: uppercase; background: var(--sage); color: white; border: none; padding: 0.6rem 1.2rem; cursor: pointer; transition: background 0.2s; }
 button.refresh-btn:hover { background: var(--sage-lt); }
-.tables-grid { display: grid; grid-template-columns: 1fr 1fr 1fr; gap: 2rem; margin-bottom: 3rem; }
-.tbl-card { background: white; border: 1px solid var(--border); }
-.tbl-head { padding: 1.2rem 1.5rem; border-bottom: 1px solid var(--border); display: flex; justify-content: space-between; align-items: center; background: var(--off); }
-.tbl-title { font-family: var(--serif); font-size: 1.05rem; }
-.tbl-pct { font-size: 0.65rem; letter-spacing: 0.08em; text-transform: uppercase; color: var(--muted); }
 table { width: 100%; border-collapse: collapse; }
 thead th { text-align: left; font-size: 0.6rem; letter-spacing: 0.1em; text-transform: uppercase; color: var(--muted); padding: 0.6rem 1.5rem; border-bottom: 1px solid var(--border); }
 td { padding: 0.55rem 1.5rem; border-bottom: 1px solid var(--border); font-size: 0.82rem; }
@@ -103,7 +98,6 @@ footer { background: var(--navy2); border-top: 1px solid rgba(232,213,163,0.08);
   .legend { flex-wrap: wrap; gap: 1rem; }
   .chart-wrap { height: 260px; }
 
-  .tables-grid { grid-template-columns: 1fr; gap: 1.2rem; }
   thead th, td { padding: 0.6rem 1rem; }
 
   footer { flex-direction: column; gap: 1rem; text-align: center; padding: 2rem 1.2rem; }
@@ -194,21 +188,6 @@ footer { background: var(--navy2); border-top: 1px solid rgba(232,213,163,0.08);
     <div class="chart-wrap"><canvas id="chart"></canvas></div>
   </div>
 
-  <div class="tables-grid">
-    <div class="tbl-card">
-      <div class="tbl-head"><span class="tbl-title">Biotech</span><span class="tbl-pct">30% · equal weight</span></div>
-      <table><thead><tr><th>Ticker</th><th class="r">Precio</th><th class="r">vs base</th></tr></thead><tbody id="tbl-bio"></tbody></table>
-    </div>
-    <div class="tbl-card">
-      <div class="tbl-head"><span class="tbl-title"><span data-es="Semiconductores">Semiconductores</span><span data-en="Semiconductors" style="display:none">Semiconductors</span></span><span class="tbl-pct">35% · equal weight</span></div>
-      <table><thead><tr><th>Ticker</th><th class="r">Precio</th><th class="r">vs base</th></tr></thead><tbody id="tbl-semi"></tbody></table>
-    </div>
-    <div class="tbl-card">
-      <div class="tbl-head"><span class="tbl-title">Hyperscalers</span><span class="tbl-pct">35% · equal weight</span></div>
-      <table><thead><tr><th>Ticker</th><th class="r">Precio</th><th class="r">vs base</th></tr></thead><tbody id="tbl-hyp"></tbody></table>
-    </div>
-  </div>
-
   <p class="disclaimer">
     <span data-es="Rendimientos pasados no garantizan resultados futuros. Idea de inversión activa, construida a partir de la rotación de Biotech + Hyperscalers + USO (cerrado el 31/7/2026 con +5.36% de retorno). Base del índice: cierre del 31 de julio de 2026. Historial diario guardado automáticamente en base de datos (Supabase) vía función programada; precio del día se actualiza en vivo con el botón 'Actualizar precios' (Finnhub). No constituye asesoramiento de inversión.">Rendimientos pasados no garantizan resultados futuros. Idea de inversión activa, construida a partir de la rotación de Biotech + Hyperscalers + USO (cerrado el 31/7/2026 con +5.36% de retorno). Base del índice: cierre del 31 de julio de 2026. Historial diario guardado automáticamente en base de datos (Supabase) vía función programada; precio del día se actualiza en vivo con el botón 'Actualizar precios' (Finnhub). No constituye asesoramiento de inversión.</span>
     <span data-en="Past performance does not guarantee future results. Active investment idea, built from the rotation out of Biotech + Hyperscalers + USO (closed 7/31/2026 with +5.36% return). Index base: July 31, 2026 close. Daily history saved automatically to a database (Supabase) via a scheduled function; today's price updates live with the 'Update prices' button (Finnhub). Does not constitute investment advice." style="display:none">Past performance does not guarantee future results. Active investment idea, built from the rotation out of Biotech + Hyperscalers + USO (closed 7/31/2026 with +5.36% return). Index base: July 31, 2026 close. Daily history saved automatically to a database (Supabase) via a scheduled function; today's price updates live with the 'Update prices' button (Finnhub). Does not constitute investment advice.</span>
@@ -227,7 +206,7 @@ footer { background: var(--navy2); border-top: 1px solid rgba(232,213,163,0.08);
 // ── Config ──────────────────────────────────────────────────────
 const SUPABASE_URL = 'https://mtdezblfhjiuvkleekbz.supabase.co';
 const SUPABASE_ANON_KEY = 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6Im10ZGV6YmxmaGppdXZrbGVla2J6Iiwicm9sZSI6ImFub24iLCJpYXQiOjE3NzU0MDk5MTMsImV4cCI6MjA5MDk4NTkxM30.hM7iStY98gZsSQzBUtdvTYlnMfRtDB8MEeMAUFoLpu4'; // publishable/anon key — pública por diseño
-const FINNHUB_KEY = 'd9maushr01qg1eud65vgd9maushr01qg1eud6600'; // misma key que ya usás en etf_tracker.html
+const FINNHUB_KEY = 'TU_FINNHUB_KEY_AQUI'; // misma key que ya usás en etf_tracker.html
 
 const BIOTECH = ['GILD','VRTX','AMGN','BIIB','MRNA','LLY','JNJ','ABBV','MRK','UNH','ISRG','TEM'];
 const SEMIS   = ['NVDA','AMD','INTC','QCOM','AVGO','TSM','ARM','ASML','LRCX','AMAT','MRVL','MU','TXN'];
@@ -310,18 +289,6 @@ function updateDisplay() {
   document.getElementById('k-semi').className = 'kpi-value ' + (lastSemi>=100?'pos':'neg');
   document.getElementById('k-hyp').textContent = lastHyp!=null ? fmtPct(lastHyp-100) : '—';
   document.getElementById('k-hyp').className = 'kpi-value ' + (lastHyp>=100?'pos':'neg');
-
-  function fillTable(tbodyId, tickers) {
-    const tbody = document.getElementById(tbodyId);
-    tbody.innerHTML = tickers.map(t => {
-      const price = quotes[t]?.price;
-      const vsBase = price ? ((price/baseP[t]-1)*100) : null;
-      return `<tr><td>${t}</td><td class="r">${price?price.toFixed(2):'—'}</td><td class="r ${vsBase>=0?'pos':'neg'}">${vsBase!=null?fmtPct(vsBase):'—'}</td></tr>`;
-    }).join('');
-  }
-  fillTable('tbl-bio', BIOTECH);
-  fillTable('tbl-semi', SEMIS);
-  fillTable('tbl-hyp', HYPER);
 
   if(chart) chart.destroy();
   chart = new Chart(document.getElementById('chart').getContext('2d'), {
