@@ -1,15 +1,6 @@
 <!DOCTYPE html>
 <html lang="es">
 <head>
-<!-- Google tag (gtag.js) -->
-<script async src="https://www.googletagmanager.com/gtag/js?id=G-RSZFZST1J6"></script>
-<script>
-  window.dataLayer = window.dataLayer || [];
-  function gtag(){dataLayer.push(arguments);}
-  gtag('js', new Date());
-  gtag('config', 'G-RSZFZST1J6');
-</script>
-
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>Biotech + Hyperscalers + USO — Trade Cerrado — Nomad Capital</title>
@@ -18,7 +9,7 @@
 <style>
 *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
 :root {
-  --navy:   #2B3A5C; --navy2:  #1e2a45; --cream:  #E8D5A3; --cream2: #f5ecd4;
+  --navy:   #2A2A38; --navy2:  #1C1C24; --cream:  #E8D5A3; --cream2: #f5ecd4;
   --sage:   #3D6B52; --sage-lt:#4A8B6A; --bg:     #fafaf7; --off:    #f2f0eb;
   --ink:    #141410; --muted:  #6a6a5a; --border: #dddbd4;
   --serif:  'Cormorant Garamond', Georgia, serif; --sans: 'Outfit', sans-serif;
@@ -26,7 +17,7 @@
 }
 html { scroll-behavior: smooth; }
 body { background: var(--bg); color: var(--ink); font-family: var(--sans); font-weight: 300; }
-nav { position: fixed; top: 0; left: 0; right: 0; z-index: 100; display: flex; align-items: center; justify-content: space-between; padding: 1.4rem 4rem; background: rgba(43,58,92,0.97); backdrop-filter: blur(12px); border-bottom: 1px solid rgba(232,213,163,0.15); }
+nav { position: fixed; top: 1.2rem; left: 1.2rem; right: 1.2rem; z-index: 100; display: flex; align-items: center; justify-content: space-between; padding: 1.2rem 3rem; background: rgba(28,28,36,0.97); backdrop-filter: blur(12px); border: 1px solid rgba(232,213,163,0.15); border-radius: 8px; box-shadow: 0 8px 30px rgba(0,0,0,0.25); transition: padding 0.3s, top 0.3s; }
 .nav-logo { display: flex; align-items: center; gap: 12px; text-decoration: none; }
 .nav-logo img { height: 22px; }
 .nav-links { display: flex; align-items: center; gap: 2rem; }
@@ -78,7 +69,7 @@ footer { background: var(--navy2); border-top: 1px solid rgba(232,213,163,0.08);
 
 /* ── Responsive ── */
 @media (max-width: 768px) {
-  nav { padding: 1rem 1.2rem; flex-wrap: wrap; gap: 0.6rem; }
+  nav { top: 0.6rem; left: 0.6rem; right: 0.6rem; padding: 1rem 1.2rem; flex-wrap: wrap; gap: 0.6rem; }
   .nav-links { gap: 1rem; }
   .nav-links a { font-size: 0.65rem; }
   .lang-btn { padding: 0.4rem 0.7rem; font-size: 0.68rem; }
@@ -169,7 +160,7 @@ footer { background: var(--navy2); border-top: 1px solid rgba(232,213,163,0.08);
       <div class="chart-title"><span data-es="Performance diaria">Performance diaria</span><span data-en="Daily performance" style="display:none">Daily performance</span> <em>(base 100 = 30/6/2026)</em></div>
       <div class="legend">
         <div class="leg"><div class="leg-dot" style="background:#4A8B6A"></div><span data-es="Cartera">Cartera</span><span data-en="Portfolio" style="display:none">Portfolio</span></div>
-        <div class="leg"><div class="leg-dot" style="background:#2B3A5C"></div>S&amp;P 500</div>
+        <div class="leg"><div class="leg-dot" style="background:#2A2A38"></div>S&amp;P 500</div>
         <div class="leg"><div class="leg-dot" style="background:#C9A96E"></div>Nasdaq-100</div>
       </div>
     </div>
@@ -200,16 +191,16 @@ footer { background: var(--navy2); border-top: 1px solid rgba(232,213,163,0.08);
         <td>23.48%</td>
       </tr>
       <tr class="highlight">
-        <td class="label">Sharpe ratio <span style="color:var(--muted);font-size:0.7rem">(rf=3.78% · T-Bill 1M)</span></td>
-        <td class="pos">3.43</td>
-        <td class="neg">-0.39</td>
-        <td class="neg">-3.38</td>
-      </tr>
-      <tr>
-        <td class="label">Sharpe ratio <span style="color:var(--muted);font-size:0.7rem">(rf=0, referencia)</span></td>
+        <td class="label">Sharpe ratio <span style="color:var(--muted);font-size:0.7rem">(rf=0)</span></td>
         <td class="pos">3.66</td>
         <td class="neg">-0.07</td>
         <td class="neg">-3.22</td>
+      </tr>
+      <tr>
+        <td class="label">Sharpe ratio <span style="color:var(--muted);font-size:0.7rem">(rf≈4.3% a.)</span></td>
+        <td class="pos">3.40</td>
+        <td class="neg">-0.43</td>
+        <td class="neg">-3.40</td>
       </tr>
       <tr class="highlight">
         <td class="label"><span data-es="Máximo drawdown">Máximo drawdown</span><span data-en="Maximum drawdown" style="display:none">Maximum drawdown</span></td>
@@ -221,8 +212,8 @@ footer { background: var(--navy2); border-top: 1px solid rgba(232,213,163,0.08);
   </table>
 
   <p class="disclaimer">
-    <span data-es="Rendimientos pasados no garantizan resultados futuros. La información de performance mostrada corresponde a una operación efectivamente implementada en cuentas de clientes de Nomad Capital, comunicada oportunamente al momento de su ejecución y cierre. El rendimiento mostrado es antes de comisiones de broker y otros costos de transacción. Serie diaria reconstruida con precios de cierre ajustados por dividendos no aplicados (Close, no Adj Close), fuente Yahoo Finance, 30/6/2026–31/7/2026. El Sharpe ratio se calculó sobre retornos diarios anualizados (√252), con tasa libre de riesgo del 3.78% anual (T-Bill de 1 mes, tasa vigente al cierre del período, fuente U.S. Treasury/FRED); se incluye también la versión con rf=0 como referencia. Los benchmarks S&P 500 (^GSPC) y Nasdaq-100 (^NDX) están rebasados a 100 en la misma fecha de inicio.">Rendimientos pasados no garantizan resultados futuros. La información de performance mostrada corresponde a una operación efectivamente implementada en cuentas de clientes de Nomad Capital, comunicada oportunamente al momento de su ejecución y cierre. El rendimiento mostrado es antes de comisiones de broker y otros costos de transacción. Serie diaria reconstruida con precios de cierre ajustados por dividendos no aplicados (Close, no Adj Close), fuente Yahoo Finance, 30/6/2026–31/7/2026. El Sharpe ratio se calculó sobre retornos diarios anualizados (√252), con tasa libre de riesgo del 3.78% anual (T-Bill de 1 mes, tasa vigente al cierre del período, fuente U.S. Treasury/FRED); se incluye también la versión con rf=0 como referencia. Los benchmarks S&P 500 (^GSPC) y Nasdaq-100 (^NDX) están rebasados a 100 en la misma fecha de inicio.</span>
-    <span data-en="Past performance does not guarantee future results. The performance information shown corresponds to a trade actually implemented in Nomad Capital client accounts, communicated in a timely manner at the time of its execution and closing. The performance shown is before broker commissions and other transaction costs. Daily series reconstructed using unadjusted closing prices (Close, not Adj Close), source Yahoo Finance, 6/30/2026-7/31/2026. The Sharpe ratio was calculated on annualized daily returns (√252), using a 3.78% annual risk-free rate (1-month T-Bill, prevailing rate at period close, source U.S. Treasury/FRED); the rf=0 version is also included as a reference. The S&P 500 (^GSPC) and Nasdaq-100 (^NDX) benchmarks are rebased to 100 on the same start date." style="display:none">Past performance does not guarantee future results. The performance information shown corresponds to a trade actually implemented in Nomad Capital client accounts, communicated in a timely manner at the time of its execution and closing. The performance shown is before broker commissions and other transaction costs. Daily series reconstructed using unadjusted closing prices (Close, not Adj Close), source Yahoo Finance, 6/30/2026-7/31/2026. The Sharpe ratio was calculated on annualized daily returns (√252), using a 3.78% annual risk-free rate (1-month T-Bill, prevailing rate at period close, source U.S. Treasury/FRED); the rf=0 version is also included as a reference. The S&P 500 (^GSPC) and Nasdaq-100 (^NDX) benchmarks are rebased to 100 on the same start date.</span>
+    <span data-es="Rendimientos pasados no garantizan resultados futuros. La información de performance mostrada corresponde a una operación efectivamente implementada en cuentas de clientes de Nomad Capital, comunicada oportunamente al momento de su ejecución y cierre. El rendimiento mostrado es antes de comisiones de broker y otros costos de transacción. Serie diaria reconstruida con precios de cierre ajustados por dividendos no aplicados (Close, no Adj Close), fuente Yahoo Finance, 30/6/2026–31/7/2026. El Sharpe ratio se calculó sobre retornos diarios anualizados (√252); se muestra con tasa libre de riesgo 0% y con una aproximación de 4.3% anual (T-Bill de corto plazo). Los benchmarks S&P 500 (^GSPC) y Nasdaq-100 (^NDX) están rebasados a 100 en la misma fecha de inicio.">Rendimientos pasados no garantizan resultados futuros. La información de performance mostrada corresponde a una operación efectivamente implementada en cuentas de clientes de Nomad Capital, comunicada oportunamente al momento de su ejecución y cierre. El rendimiento mostrado es antes de comisiones de broker y otros costos de transacción. Serie diaria reconstruida con precios de cierre ajustados por dividendos no aplicados (Close, no Adj Close), fuente Yahoo Finance, 30/6/2026–31/7/2026. El Sharpe ratio se calculó sobre retornos diarios anualizados (√252); se muestra con tasa libre de riesgo 0% y con una aproximación de 4.3% anual (T-Bill de corto plazo). Los benchmarks S&P 500 (^GSPC) y Nasdaq-100 (^NDX) están rebasados a 100 en la misma fecha de inicio.</span>
+    <span data-en="Past performance does not guarantee future results. The performance information shown corresponds to a trade actually implemented in Nomad Capital client accounts, communicated in a timely manner at the time of its execution and closing. The performance shown is before broker commissions and other transaction costs. Daily series reconstructed using unadjusted closing prices (Close, not Adj Close), source Yahoo Finance, 6/30/2026-7/31/2026. The Sharpe ratio was calculated on annualized daily returns (√252); shown with a 0% risk-free rate and with an approximation of 4.3% annual (short-term T-Bill). The S&P 500 (^GSPC) and Nasdaq-100 (^NDX) benchmarks are rebased to 100 on the same start date." style="display:none">Past performance does not guarantee future results. The performance information shown corresponds to a trade actually implemented in Nomad Capital client accounts, communicated in a timely manner at the time of its execution and closing. The performance shown is before broker commissions and other transaction costs. Daily series reconstructed using unadjusted closing prices (Close, not Adj Close), source Yahoo Finance, 6/30/2026-7/31/2026. The Sharpe ratio was calculated on annualized daily returns (√252); shown with a 0% risk-free rate and with an approximation of 4.3% annual (short-term T-Bill). The S&P 500 (^GSPC) and Nasdaq-100 (^NDX) benchmarks are rebased to 100 on the same start date.</span>
   </p>
 </main>
 
@@ -255,7 +246,7 @@ new Chart(document.getElementById('chart').getContext('2d'), {
       {
         label: 'S&P 500',
         data: spx,
-        borderColor: '#2B3A5C',
+        borderColor: '#2A2A38',
         backgroundColor: 'transparent',
         borderWidth: 1.5, pointRadius: 0, pointHoverRadius: 4, fill: false, tension: 0.3, borderDash: [4,3]
       },

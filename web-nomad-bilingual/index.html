@@ -1,15 +1,6 @@
 <!DOCTYPE html>
 <html lang="es" id="htmlRoot">
 <head>
-<!-- Google tag (gtag.js) -->
-<script async src="https://www.googletagmanager.com/gtag/js?id=G-RSZFZST1J6"></script>
-<script>
-  window.dataLayer = window.dataLayer || [];
-  function gtag(){dataLayer.push(arguments);}
-  gtag('js', new Date());
-  gtag('config', 'G-RSZFZST1J6');
-</script>
-
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>Nomad Capital</title>
@@ -18,8 +9,8 @@
 
 *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
 :root {
-  --navy:   #2B3A5C;
-  --navy2:  #1e2a45;
+  --navy:   #2A2A38;
+  --navy2:  #1C1C24;
   --cream:  #E8D5A3;
   --cream2: #f5ecd4;
   --sage:   #3D6B52;
@@ -46,15 +37,17 @@ body { background: var(--bg); color: var(--ink); font-family: var(--sans); font-
 
 /* ── Nav ── */
 nav {
-  position: fixed; top: 0; left: 0; right: 0; z-index: 100;
+  position: fixed; top: 1.2rem; left: 1.2rem; right: 1.2rem; z-index: 100;
   display: flex; align-items: center; justify-content: space-between;
-  padding: 1.4rem 4rem;
-  background: rgba(43,58,92,0.97);
+  padding: 1.2rem 3rem;
+  background: rgba(28,28,36,0.97);
   backdrop-filter: blur(12px);
-  border-bottom: 1px solid rgba(232,213,163,0.15);
-  transition: padding 0.3s;
+  border: 1px solid rgba(232,213,163,0.15);
+  border-radius: 8px;
+  box-shadow: 0 8px 30px rgba(0,0,0,0.25);
+  transition: padding 0.3s, top 0.3s;
 }
-nav.scrolled { padding: 1rem 4rem; }
+nav.scrolled { padding: 0.9rem 3rem; top: 0.7rem; }
 .nav-logo { display: flex; align-items: center; gap: 12px; text-decoration: none; }
 .nav-logo-icon svg { width: 34px; height: 34px; }
 .nav-logo-text { }
@@ -284,7 +277,7 @@ section { position: relative; }
 
 /* ── Footer ── */
 footer {
-  background: var(--navy);
+  background: var(--navy2);
   padding: 3rem 4rem;
   display: flex; align-items: center; justify-content: space-between;
   border-top: 1px solid rgba(232,213,163,0.1);
@@ -300,8 +293,8 @@ footer {
 /* ── Responsive ── */
 @media (max-width: 768px) {
   /* Nav */
-  nav { padding: 1rem 1.2rem; flex-wrap: nowrap; gap: 0.5rem; }
-  nav.scrolled { padding: 0.8rem 1.2rem; }
+  nav { top: 0.6rem; left: 0.6rem; right: 0.6rem; padding: 1rem 1.2rem; flex-wrap: nowrap; gap: 0.5rem; }
+  nav.scrolled { padding: 0.8rem 1.2rem; top: 0.4rem; }
   .nav-links { display: none; }
   .btn-nav-contact { display: none; }
   .lang-btn { padding: 0.4rem 0.7rem; font-size: 0.68rem; }
@@ -610,19 +603,19 @@ footer {
 
 <!-- Trade Ideas -->
 <section id="trade-ideas">
-  <div style="background:var(--navy2);padding:6rem 4rem;border-top:1px solid rgba(232,213,163,0.08)">
+  <div style="background:var(--bg);padding:6rem 4rem;border-top:1px solid rgba(20,20,16,0.08)">
     <div style="max-width:1200px;margin:0 auto">
       <div class="reveal" style="margin-bottom:3.5rem">
         <div style="font-size:0.62rem;letter-spacing:0.2em;text-transform:uppercase;color:var(--sage-lt);margin-bottom:1rem;display:flex;align-items:center;gap:0.75rem">
           <span style="width:32px;height:1px;background:var(--sage-lt);display:inline-block"></span>
-          <span data-es="Ideas de inversión activas">Ideas de inversión activas</span>
-          <span data-en="Active investment ideas" style="display:none">Active investment ideas</span>
+          <span data-es="Ideas de inversión">Ideas de inversión</span>
+          <span data-en="Investment ideas" style="display:none">Investment ideas</span>
         </div>
-        <h2 style="font-family:var(--serif);font-size:2.8rem;font-weight:300;color:var(--cream2);line-height:1.2;margin-bottom:1rem">
-          <span data-es="Trade Ideas <em>en curso</em>">Trade Ideas <em>en curso</em></span>
-          <span data-en="Active <em>Trade Ideas</em>" style="display:none">Active <em>Trade Ideas</em></span>
+        <h2 style="font-family:var(--serif);font-size:2.8rem;font-weight:300;color:var(--ink);line-height:1.2;margin-bottom:1rem">
+          <span data-es="Trade Ideas">Trade Ideas</span>
+          <span data-en="Trade Ideas" style="display:none">Trade Ideas</span>
         </h2>
-        <p style="font-size:0.88rem;color:rgba(232,213,163,0.5);line-height:1.8;max-width:560px">
+        <p style="font-size:0.88rem;color:rgba(20,20,16,0.6);line-height:1.8;max-width:560px">
           <span data-es="Son las ideas de trade que armamos para nuestros clientes y vamos rotando a lo largo del año, según las condiciones de mercado y las oportunidades que identificamos. Cada card incluye la tesis, el vehículo de implementación y el rendimiento actualizado en tiempo real.">Son las ideas de trade que armamos para nuestros clientes y vamos rotando a lo largo del año, según las condiciones de mercado y las oportunidades que identificamos. Cada card incluye la tesis, el vehículo de implementación y el rendimiento actualizado en tiempo real.</span>
           <span data-en="These are the trade ideas we build for our clients and rotate throughout the year, based on market conditions and the opportunities we identify. Each card includes the thesis, the implementation vehicle, and real-time updated performance." style="display:none">These are the trade ideas we build for our clients and rotate throughout the year, based on market conditions and the opportunities we identify. Each card includes the thesis, the implementation vehicle, and real-time updated performance.</span>
         </p>
@@ -632,86 +625,86 @@ footer {
       <div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(320px,1fr));gap:1.5rem">
 
         <!-- TRADE IDEA (más nuevo): Biotech + Semiconductores + Hyperscalers (CERRADO) -->
-        <div class="reveal" style="background:rgba(232,213,163,0.04);border:1px solid rgba(232,213,163,0.1);padding:2.5rem;transition:border-color 0.2s" onmouseover="this.style.borderColor='rgba(232,213,163,0.25)'" onmouseout="this.style.borderColor='rgba(232,213,163,0.1)'">
+        <div class="reveal" style="background:#ffffff;border:1px solid rgba(20,20,16,0.1);padding:2.5rem;transition:border-color 0.2s,box-shadow 0.2s;box-shadow:0 2px 12px rgba(20,20,16,0.04)" onmouseover="this.style.borderColor='rgba(20,20,16,0.25)';this.style.boxShadow='0 6px 20px rgba(20,20,16,0.08)'" onmouseout="this.style.borderColor='rgba(20,20,16,0.1)';this.style.boxShadow='0 2px 12px rgba(20,20,16,0.04)'">
           <div style="display:flex;justify-content:space-between;align-items:flex-start;margin-bottom:1.5rem">
             <div data-es="Renta Variable · Cerrado" data-en="Equities · Closed" style="font-size:0.6rem;letter-spacing:0.15em;text-transform:uppercase;color:#C47A7A;border:1px solid rgba(196,122,122,0.4);padding:0.25rem 0.75rem">Renta Variable · Cerrado</div>
-            <div data-es="31/7/2026 → 21/8/2026" data-en="7/31/2026 → 8/21/2026" style="font-size:0.6rem;color:rgba(232,213,163,0.35);letter-spacing:0.05em">31/7/2026 → 21/8/2026</div>
+            <div data-es="31/7/2026 → 21/8/2026" data-en="7/31/2026 → 8/21/2026" style="font-size:0.6rem;color:rgba(20,20,16,0.4);letter-spacing:0.05em">31/7/2026 → 21/8/2026</div>
           </div>
-          <h3 data-es="Biotech + Semiconductores + Hyperscalers" data-en="Biotech + Semiconductors + Hyperscalers" style="font-family:var(--serif);font-size:1.5rem;font-weight:300;color:var(--cream2);line-height:1.3;margin-bottom:0.75rem">Biotech + Semiconductores + Hyperscalers</h3>
-          <p data-es="Canasta equal weight de biotech, semiconductores y hyperscalers. Rotación desde Biotech + Hyperscalers + USO, pensada para diversificar oportunidades y riesgos entre tres motores distintos de la demanda de IA." data-en="Equal weight basket of biotech, semiconductors, and hyperscalers. Rotated from Biotech + Hyperscalers + USO, designed to diversify opportunities and risk across three distinct AI-demand drivers." style="font-size:0.8rem;color:rgba(232,213,163,0.5);line-height:1.7;margin-bottom:2rem">Canasta equal weight de biotech, semiconductores y hyperscalers. Rotación desde Biotech + Hyperscalers + USO, pensada para diversificar oportunidades y riesgos entre tres motores distintos de la demanda de IA.</p>
+          <h3 data-es="Biotech + Semiconductores + Hyperscalers" data-en="Biotech + Semiconductors + Hyperscalers" style="font-family:var(--serif);font-size:1.5rem;font-weight:300;color:var(--ink);line-height:1.3;margin-bottom:0.75rem">Biotech + Semiconductores + Hyperscalers</h3>
+          <p data-es="Canasta equal weight de biotech, semiconductores y hyperscalers. Rotación desde Biotech + Hyperscalers + USO, pensada para diversificar oportunidades y riesgos entre tres motores distintos de la demanda de IA." data-en="Equal weight basket of biotech, semiconductors, and hyperscalers. Rotated from Biotech + Hyperscalers + USO, designed to diversify opportunities and risk across three distinct AI-demand drivers." style="font-size:0.8rem;color:rgba(20,20,16,0.6);line-height:1.7;margin-bottom:2rem">Canasta equal weight de biotech, semiconductores y hyperscalers. Rotación desde Biotech + Hyperscalers + USO, pensada para diversificar oportunidades y riesgos entre tres motores distintos de la demanda de IA.</p>
           <div style="display:flex;gap:1rem;margin-bottom:2rem">
             <div style="flex:1;background:rgba(61,107,82,0.1);padding:1rem;text-align:center">
-              <div data-es="Rendimiento" data-en="Return" style="font-size:0.6rem;color:rgba(232,213,163,0.4);letter-spacing:0.1em;text-transform:uppercase;margin-bottom:0.5rem">Rendimiento</div>
-              <div style="font-family:var(--serif);font-size:0.9rem;color:#6BAF8A">+9.28%</div>
+              <div data-es="Rendimiento" data-en="Return" style="font-size:0.6rem;color:rgba(20,20,16,0.45);letter-spacing:0.1em;text-transform:uppercase;margin-bottom:0.5rem">Rendimiento</div>
+              <div style="font-family:var(--serif);font-size:0.9rem;color:var(--sage)">+9.28%</div>
             </div>
             <div style="flex:1;background:rgba(61,107,82,0.1);padding:1rem;text-align:center">
-              <div data-es="Sharpe ratio" data-en="Sharpe ratio" style="font-size:0.6rem;color:rgba(232,213,163,0.4);letter-spacing:0.1em;text-transform:uppercase;margin-bottom:0.5rem">Sharpe ratio</div>
-              <div style="font-family:var(--serif);font-size:0.9rem;color:var(--cream2)">4.59</div>
+              <div data-es="Sharpe ratio" data-en="Sharpe ratio" style="font-size:0.6rem;color:rgba(20,20,16,0.45);letter-spacing:0.1em;text-transform:uppercase;margin-bottom:0.5rem">Sharpe ratio</div>
+              <div style="font-family:var(--serif);font-size:0.9rem;color:var(--ink)">4.59</div>
             </div>
           </div>
-          <a href="semis_tracker.html" data-es="Ver resultado completo →" data-en="View full results →" style="display:inline-flex;align-items:center;gap:0.5rem;font-size:0.72rem;letter-spacing:0.1em;text-transform:uppercase;color:var(--sage-lt);text-decoration:none;border-bottom:1px solid rgba(61,107,82,0.3);padding-bottom:0.25rem;transition:all 0.2s" onmouseover="this.style.color='#fff';this.style.borderBottomColor='rgba(255,255,255,0.4)'" onmouseout="this.style.color='var(--sage-lt)';this.style.borderBottomColor='rgba(61,107,82,0.3)'">
+          <a href="semis_tracker.html" data-es="Ver resultado completo →" data-en="View full results →" style="display:inline-flex;align-items:center;gap:0.5rem;font-size:0.72rem;letter-spacing:0.1em;text-transform:uppercase;color:var(--sage-lt);text-decoration:none;border-bottom:1px solid rgba(61,107,82,0.3);padding-bottom:0.25rem;transition:all 0.2s" onmouseover="this.style.color='var(--ink)';this.style.borderBottomColor='rgba(20,20,16,0.4)'" onmouseout="this.style.color='var(--sage-lt)';this.style.borderBottomColor='rgba(61,107,82,0.3)'">
             Ver resultado completo →
           </a>
         </div>
 
         <!-- TRADE IDEA (medio): Biotech + Hyperscalers + USO (CERRADO) -->
-        <div class="reveal" style="background:rgba(232,213,163,0.04);border:1px solid rgba(232,213,163,0.1);padding:2.5rem;transition:border-color 0.2s" onmouseover="this.style.borderColor='rgba(232,213,163,0.25)'" onmouseout="this.style.borderColor='rgba(232,213,163,0.1)'">
+        <div class="reveal" style="background:#ffffff;border:1px solid rgba(20,20,16,0.1);padding:2.5rem;transition:border-color 0.2s,box-shadow 0.2s;box-shadow:0 2px 12px rgba(20,20,16,0.04)" onmouseover="this.style.borderColor='rgba(20,20,16,0.25)';this.style.boxShadow='0 6px 20px rgba(20,20,16,0.08)'" onmouseout="this.style.borderColor='rgba(20,20,16,0.1)';this.style.boxShadow='0 2px 12px rgba(20,20,16,0.04)'">
           <div style="display:flex;justify-content:space-between;align-items:flex-start;margin-bottom:1.5rem">
             <div data-es="Renta Variable · Cerrado" data-en="Equities · Closed" style="font-size:0.6rem;letter-spacing:0.15em;text-transform:uppercase;color:#C47A7A;border:1px solid rgba(196,122,122,0.4);padding:0.25rem 0.75rem">Renta Variable · Cerrado</div>
-            <div data-es="30/6/2026 → 31/7/2026" data-en="6/30/2026 → 7/31/2026" style="font-size:0.6rem;color:rgba(232,213,163,0.35);letter-spacing:0.05em">30/6/2026 → 31/7/2026</div>
+            <div data-es="30/6/2026 → 31/7/2026" data-en="6/30/2026 → 7/31/2026" style="font-size:0.6rem;color:rgba(20,20,16,0.4);letter-spacing:0.05em">30/6/2026 → 31/7/2026</div>
           </div>
-          <h3 data-es="Biotech + Hyperscalers + USO" data-en="Biotech + Hyperscalers + USO" style="font-family:var(--serif);font-size:1.5rem;font-weight:300;color:var(--cream2);line-height:1.3;margin-bottom:0.75rem">Biotech + Hyperscalers + USO</h3>
-          <p data-es="Canasta equal weight de biotech, hyperscalers y petróleo. Exposición a IA como catalizador en biotech y calidad en hyperscalers, con cobertura macro en el sector energético." data-en="Equal weight basket of biotech, hyperscalers, and oil. AI-catalyst exposure in biotech and quality in hyperscalers, with macro hedge in the energy sector." style="font-size:0.8rem;color:rgba(232,213,163,0.5);line-height:1.7;margin-bottom:2rem">Canasta equal weight de biotech, hyperscalers y petróleo. Exposición a IA como catalizador en biotech y calidad en hyperscalers, con cobertura macro en el sector energético.</p>
+          <h3 data-es="Biotech + Hyperscalers + USO" data-en="Biotech + Hyperscalers + USO" style="font-family:var(--serif);font-size:1.5rem;font-weight:300;color:var(--ink);line-height:1.3;margin-bottom:0.75rem">Biotech + Hyperscalers + USO</h3>
+          <p data-es="Canasta equal weight de biotech, hyperscalers y petróleo. Exposición a IA como catalizador en biotech y calidad en hyperscalers, con cobertura macro en el sector energético." data-en="Equal weight basket of biotech, hyperscalers, and oil. AI-catalyst exposure in biotech and quality in hyperscalers, with macro hedge in the energy sector." style="font-size:0.8rem;color:rgba(20,20,16,0.6);line-height:1.7;margin-bottom:2rem">Canasta equal weight de biotech, hyperscalers y petróleo. Exposición a IA como catalizador en biotech y calidad en hyperscalers, con cobertura macro en el sector energético.</p>
           <div style="display:flex;gap:1rem;margin-bottom:2rem">
             <div style="flex:1;background:rgba(61,107,82,0.1);padding:1rem;text-align:center">
-              <div data-es="Rendimiento" data-en="Return" style="font-size:0.6rem;color:rgba(232,213,163,0.4);letter-spacing:0.1em;text-transform:uppercase;margin-bottom:0.5rem">Rendimiento</div>
-              <div style="font-family:var(--serif);font-size:0.9rem;color:#6BAF8A">+5.36%</div>
+              <div data-es="Rendimiento" data-en="Return" style="font-size:0.6rem;color:rgba(20,20,16,0.45);letter-spacing:0.1em;text-transform:uppercase;margin-bottom:0.5rem">Rendimiento</div>
+              <div style="font-family:var(--serif);font-size:0.9rem;color:var(--sage)">+5.36%</div>
             </div>
             <div style="flex:1;background:rgba(61,107,82,0.1);padding:1rem;text-align:center">
-              <div data-es="Sharpe ratio" data-en="Sharpe ratio" style="font-size:0.6rem;color:rgba(232,213,163,0.4);letter-spacing:0.1em;text-transform:uppercase;margin-bottom:0.5rem">Sharpe ratio</div>
-              <div style="font-family:var(--serif);font-size:0.9rem;color:var(--cream2)">3.43</div>
+              <div data-es="Sharpe ratio" data-en="Sharpe ratio" style="font-size:0.6rem;color:rgba(20,20,16,0.45);letter-spacing:0.1em;text-transform:uppercase;margin-bottom:0.5rem">Sharpe ratio</div>
+              <div style="font-family:var(--serif);font-size:0.9rem;color:var(--ink)">3.43</div>
             </div>
           </div>
-          <a href="etf_tracker.html" data-es="Ver resultado completo →" data-en="View full results →" style="display:inline-flex;align-items:center;gap:0.5rem;font-size:0.72rem;letter-spacing:0.1em;text-transform:uppercase;color:var(--sage-lt);text-decoration:none;border-bottom:1px solid rgba(61,107,82,0.3);padding-bottom:0.25rem;transition:all 0.2s" onmouseover="this.style.color='#fff';this.style.borderBottomColor='rgba(255,255,255,0.4)'" onmouseout="this.style.color='var(--sage-lt)';this.style.borderBottomColor='rgba(61,107,82,0.3)'">
+          <a href="etf_tracker.html" data-es="Ver resultado completo →" data-en="View full results →" style="display:inline-flex;align-items:center;gap:0.5rem;font-size:0.72rem;letter-spacing:0.1em;text-transform:uppercase;color:var(--sage-lt);text-decoration:none;border-bottom:1px solid rgba(61,107,82,0.3);padding-bottom:0.25rem;transition:all 0.2s" onmouseover="this.style.color='var(--ink)';this.style.borderBottomColor='rgba(20,20,16,0.4)'" onmouseout="this.style.color='var(--sage-lt)';this.style.borderBottomColor='rgba(61,107,82,0.3)'">
             Ver resultado completo →
           </a>
         </div>
 
         <!-- TRADE IDEA (más viejo): AI Infrastructure & Power (CERRADO) -->
-        <div class="reveal" style="background:rgba(232,213,163,0.04);border:1px solid rgba(232,213,163,0.1);padding:2.5rem;transition:border-color 0.2s" onmouseover="this.style.borderColor='rgba(232,213,163,0.25)'" onmouseout="this.style.borderColor='rgba(232,213,163,0.1)'">
+        <div class="reveal" style="background:#ffffff;border:1px solid rgba(20,20,16,0.1);padding:2.5rem;transition:border-color 0.2s,box-shadow 0.2s;box-shadow:0 2px 12px rgba(20,20,16,0.04)" onmouseover="this.style.borderColor='rgba(20,20,16,0.25)';this.style.boxShadow='0 6px 20px rgba(20,20,16,0.08)'" onmouseout="this.style.borderColor='rgba(20,20,16,0.1)';this.style.boxShadow='0 2px 12px rgba(20,20,16,0.04)'">
           <div style="display:flex;justify-content:space-between;align-items:flex-start;margin-bottom:1.5rem">
             <div data-es="Renta Variable · Cerrado" data-en="Equities · Closed" style="font-size:0.6rem;letter-spacing:0.15em;text-transform:uppercase;color:#C47A7A;border:1px solid rgba(196,122,122,0.4);padding:0.25rem 0.75rem">Renta Variable · Cerrado</div>
-            <div data-es="1/12/2025 → 15/5/2026" data-en="12/1/2025 → 5/15/2026" style="font-size:0.6rem;color:rgba(232,213,163,0.35);letter-spacing:0.05em">1/12/2025 → 15/5/2026</div>
+            <div data-es="1/12/2025 → 15/5/2026" data-en="12/1/2025 → 5/15/2026" style="font-size:0.6rem;color:rgba(20,20,16,0.4);letter-spacing:0.05em">1/12/2025 → 15/5/2026</div>
           </div>
-          <h3 data-es="AI Infrastructure & Power" data-en="AI Infrastructure & Power" style="font-family:var(--serif);font-size:1.5rem;font-weight:300;color:var(--cream2);line-height:1.3;margin-bottom:0.75rem">AI Infrastructure & Power</h3>
-          <p data-es="Canasta equal weight de semiconductores, hyperscalers y generación eléctrica, con rebalanceos mensuales. La expansión de infraestructura de IA requiere cómputo y energía simultáneamente." data-en="Equal weight basket of semiconductors, hyperscalers, and power generation, with monthly rebalancing. AI infrastructure expansion requires both compute and energy simultaneously." style="font-size:0.8rem;color:rgba(232,213,163,0.5);line-height:1.7;margin-bottom:2rem">Canasta equal weight de semiconductores, hyperscalers y generación eléctrica, con rebalanceos mensuales. La expansión de infraestructura de IA requiere cómputo y energía simultáneamente.</p>
+          <h3 data-es="AI Infrastructure & Power" data-en="AI Infrastructure & Power" style="font-family:var(--serif);font-size:1.5rem;font-weight:300;color:var(--ink);line-height:1.3;margin-bottom:0.75rem">AI Infrastructure & Power</h3>
+          <p data-es="Canasta equal weight de semiconductores, hyperscalers y generación eléctrica, con rebalanceos mensuales. La expansión de infraestructura de IA requiere cómputo y energía simultáneamente." data-en="Equal weight basket of semiconductors, hyperscalers, and power generation, with monthly rebalancing. AI infrastructure expansion requires both compute and energy simultaneously." style="font-size:0.8rem;color:rgba(20,20,16,0.6);line-height:1.7;margin-bottom:2rem">Canasta equal weight de semiconductores, hyperscalers y generación eléctrica, con rebalanceos mensuales. La expansión de infraestructura de IA requiere cómputo y energía simultáneamente.</p>
           <div style="display:flex;gap:1rem;margin-bottom:2rem">
             <div style="flex:1;background:rgba(61,107,82,0.1);padding:1rem;text-align:center">
-              <div data-es="Rendimiento" data-en="Return" style="font-size:0.6rem;color:rgba(232,213,163,0.4);letter-spacing:0.1em;text-transform:uppercase;margin-bottom:0.5rem">Rendimiento</div>
-              <div style="font-family:var(--serif);font-size:0.9rem;color:#6BAF8A">+32.67%</div>
+              <div data-es="Rendimiento" data-en="Return" style="font-size:0.6rem;color:rgba(20,20,16,0.45);letter-spacing:0.1em;text-transform:uppercase;margin-bottom:0.5rem">Rendimiento</div>
+              <div style="font-family:var(--serif);font-size:0.9rem;color:var(--sage)">+32.67%</div>
             </div>
             <div style="flex:1;background:rgba(61,107,82,0.1);padding:1rem;text-align:center">
-              <div data-es="Sharpe ratio" data-en="Sharpe ratio" style="font-size:0.6rem;color:rgba(232,213,163,0.4);letter-spacing:0.1em;text-transform:uppercase;margin-bottom:0.5rem">Sharpe ratio</div>
-              <div style="font-family:var(--serif);font-size:0.9rem;color:var(--cream2)">1.91</div>
+              <div data-es="Sharpe ratio" data-en="Sharpe ratio" style="font-size:0.6rem;color:rgba(20,20,16,0.45);letter-spacing:0.1em;text-transform:uppercase;margin-bottom:0.5rem">Sharpe ratio</div>
+              <div style="font-family:var(--serif);font-size:0.9rem;color:var(--ink)">1.91</div>
             </div>
           </div>
-          <a href="ai_infra_trade.html" data-es="Ver resultado completo →" data-en="View full results →" style="display:inline-flex;align-items:center;gap:0.5rem;font-size:0.72rem;letter-spacing:0.1em;text-transform:uppercase;color:var(--sage-lt);text-decoration:none;border-bottom:1px solid rgba(61,107,82,0.3);padding-bottom:0.25rem;transition:all 0.2s" onmouseover="this.style.color='#fff';this.style.borderBottomColor='rgba(255,255,255,0.4)'" onmouseout="this.style.color='var(--sage-lt)';this.style.borderBottomColor='rgba(61,107,82,0.3)'">
+          <a href="ai_infra_trade.html" data-es="Ver resultado completo →" data-en="View full results →" style="display:inline-flex;align-items:center;gap:0.5rem;font-size:0.72rem;letter-spacing:0.1em;text-transform:uppercase;color:var(--sage-lt);text-decoration:none;border-bottom:1px solid rgba(61,107,82,0.3);padding-bottom:0.25rem;transition:all 0.2s" onmouseover="this.style.color='var(--ink)';this.style.borderBottomColor='rgba(20,20,16,0.4)'" onmouseout="this.style.color='var(--sage-lt)';this.style.borderBottomColor='rgba(61,107,82,0.3)'">
             Ver resultado completo →
           </a>
         </div>
 
         <!-- PLACEHOLDER — PRÓXIMA TRADE IDEA -->
-        <div class="reveal" style="background:transparent;border:1px dashed rgba(232,213,163,0.06);padding:2.5rem;display:flex;flex-direction:column;align-items:center;justify-content:center;min-height:300px;text-align:center">
-          <div style="width:40px;height:40px;border:1px solid rgba(232,213,163,0.1);display:flex;align-items:center;justify-content:center;margin-bottom:1.5rem">
-            <svg width="16" height="16" viewBox="0 0 16 16" fill="none"><line x1="8" y1="2" x2="8" y2="14" stroke="rgba(232,213,163,0.3)" stroke-width="1"/><line x1="2" y1="8" x2="14" y2="8" stroke="rgba(232,213,163,0.3)" stroke-width="1"/></svg>
+        <div class="reveal" style="background:transparent;border:1px dashed rgba(20,20,16,0.12);padding:2.5rem;display:flex;flex-direction:column;align-items:center;justify-content:center;min-height:300px;text-align:center">
+          <div style="width:40px;height:40px;border:1px solid rgba(20,20,16,0.15);display:flex;align-items:center;justify-content:center;margin-bottom:1.5rem">
+            <svg width="16" height="16" viewBox="0 0 16 16" fill="none"><line x1="8" y1="2" x2="8" y2="14" stroke="rgba(20,20,16,0.35)" stroke-width="1"/><line x1="2" y1="8" x2="14" y2="8" stroke="rgba(20,20,16,0.35)" stroke-width="1"/></svg>
           </div>
-          <div data-es="Próxima trade idea" data-en="Next trade idea" style="font-size:0.72rem;color:rgba(232,213,163,0.25);letter-spacing:0.08em">Próxima trade idea</div>
+          <div data-es="Próxima trade idea" data-en="Next trade idea" style="font-size:0.72rem;color:rgba(20,20,16,0.3);letter-spacing:0.08em">Próxima trade idea</div>
         </div>
 
       </div>
 
-      <div class="reveal" style="margin-top:2.5rem;padding-top:2rem;border-top:1px solid rgba(232,213,163,0.08)">
-        <p style="font-size:0.7rem;color:rgba(232,213,163,0.3);line-height:1.7;max-width:700px">
+      <div class="reveal" style="margin-top:2.5rem;padding-top:2rem;border-top:1px solid rgba(20,20,16,0.08)">
+        <p style="font-size:0.7rem;color:rgba(20,20,16,0.35);line-height:1.7;max-width:700px">
           <span data-es="Rendimientos pasados no garantizan resultados futuros. Toda la información sobre performance mostrada corresponde a operaciones efectivamente implementadas en cuentas de clientes de Nomad Capital, comunicadas oportunamente al momento de su ejecución.">Rendimientos pasados no garantizan resultados futuros. Toda la información sobre performance mostrada corresponde a operaciones efectivamente implementadas en cuentas de clientes de Nomad Capital, comunicadas oportunamente al momento de su ejecución.</span>
           <span data-en="Past performance does not guarantee future results. All performance information shown corresponds to trades actually implemented in Nomad Capital client accounts, communicated in a timely manner at the time of execution." style="display:none">Past performance does not guarantee future results. All performance information shown corresponds to trades actually implemented in Nomad Capital client accounts, communicated in a timely manner at the time of execution.</span>
         </p>
