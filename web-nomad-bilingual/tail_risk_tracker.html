@@ -222,9 +222,13 @@ function actualizarKPIs(portfolio) {
   const diasAVencimiento = Math.max(0, Math.round((FECHA_VENCIMIENTO - hoy) / 86400000));
 
   const retornoTotal = portfolio[portfolio.length - 1] - 100;
+  // Con una sola fila (día de apertura), la variación de hoy ES el retorno 
+  // total -- ambos representan el mismo movimiento (de costo_entrada al 
+  // primer mark del día). Recién a partir de la 2da fila tiene sentido 
+  // comparar contra el cierre del día anterior.
   const retornoHoy = portfolio.length > 1
     ? ((portfolio[portfolio.length - 1] / portfolio[portfolio.length - 2]) - 1) * 100
-    : 0;
+    : retornoTotal;
 
   const elTotal = document.getElementById('kpiTotal');
   elTotal.textContent = (retornoTotal >= 0 ? '+' : '') + retornoTotal.toFixed(2) + '%';
