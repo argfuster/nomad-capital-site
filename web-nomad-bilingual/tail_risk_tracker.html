@@ -299,6 +299,26 @@ window.toggleLang = function() {
   window.currentLang = window.currentLang === 'es' ? 'en' : 'es';
   localStorage.setItem('nc_lang', window.currentLang);
   window.applyLang();
+}
+
+window.applyLang = function() {
+  const isEN = window.currentLang === 'en';
+  document.getElementById('langActive').textContent  = isEN ? 'EN' : 'ES';
+  document.getElementById('langInactive').textContent = isEN ? 'ES' : 'EN';
+  document.documentElement.lang = window.currentLang;
+
+  document.querySelectorAll('[data-es], [data-en]').forEach(el => {
+    const textKey = isEN ? el.dataset.en : el.dataset.es;
+    if(textKey !== undefined) {
+      if(!el.querySelector('span[data-es], span[data-en]')) {
+        el.innerHTML = textKey;
+      }
+    }
+  });
+  document.querySelectorAll('span[data-es]').forEach(el => { el.style.display = isEN ? 'none' : ''; });
+  document.querySelectorAll('span[data-en]').forEach(el => { el.style.display = isEN ? '' : 'none'; });
+}
+applyLang();
 </script>
 </body>
 </html>
