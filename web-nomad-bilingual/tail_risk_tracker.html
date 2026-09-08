@@ -290,7 +290,11 @@ cargarDatos()
       return;
     }
     actualizarKPIs(portfolio);
-    dibujarChart(labels, portfolio);
+    // Punto sintético de apertura (100) al principio del grafico -- da un 
+    // origen visual claro incluso cuando todavia hay pocos datos reales.
+    const labelsConApertura = ['Apertura', ...labels];
+    const portfolioConApertura = [100, ...portfolio];
+    dibujarChart(labelsConApertura, portfolioConApertura);
   })
   .catch(err => {
     console.error('Error cargando datos del tracker:', err);
