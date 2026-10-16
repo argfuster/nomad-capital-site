@@ -12,7 +12,7 @@
 
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Tail Risk — Long Strangle IWM — Trade Abierto — Nomad Capital</title>
+<title>Tail Risk — Long Strangle IWM — Trade Cerrado — Nomad Capital</title>
 <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,600;1,300;1,400&family=Outfit:wght@300;400;500;600&display=swap" rel="stylesheet">
 <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/4.4.1/chart.umd.js"></script>
 <style>
@@ -127,59 +127,107 @@ footer { background: var(--navy2); border-top: 1px solid rgba(232,213,163,0.08);
 </nav>
 
 <div class="page-hero">
-  <div class="status-badge" id="statusBadge" style="color:#4A8B6A;border-color:rgba(74,139,106,0.4)">
-    <span class="status-dot" style="background:#4A8B6A"></span>
-    <span data-es="Trade abierto">Trade abierto</span><span data-en="Open trade" style="display:none">Open trade</span>
-  </div>
+  <div class="status-badge"><span class="status-dot"></span><span data-es="Trade cerrado">Trade cerrado</span><span data-en="Closed trade" style="display:none">Closed trade</span></div>
   <h1><em>Tail Risk</em><br>Long Strangle IWM</h1>
   <p class="page-hero-sub">
-    <span data-es="Estrategia de volatilidad de cola independiente, no vinculada a la venta sistemática de volatilidad (VRP) del fondo de opciones. Posición de convexidad sobre IWM, con vencimiento diciembre 2026.">Estrategia de volatilidad de cola independiente, no vinculada a la venta sistemática de volatilidad (VRP) del fondo de opciones. Posición de convexidad sobre IWM, con vencimiento diciembre 2026.</span>
-    <span data-en="Independent tail-risk volatility strategy, not linked to the options fund's systematic volatility selling (VRP). Convexity position on IWM, December 2026 expiry." style="display:none">Independent tail-risk volatility strategy, not linked to the options fund's systematic volatility selling (VRP). Convexity position on IWM, December 2026 expiry.</span>
+    <span data-es="Estrategia de volatilidad de cola independiente, no vinculada a la venta sistemática de volatilidad (VRP) del fondo de opciones. Posición de convexidad sobre IWM: long strangle con put 275 y call 315, vencimiento diciembre 2026.">Estrategia de volatilidad de cola independiente, no vinculada a la venta sistemática de volatilidad (VRP) del fondo de opciones. Posición de convexidad sobre IWM: long strangle con put 275 y call 315, vencimiento diciembre 2026.</span><span data-en="Independent tail-risk volatility strategy, not linked to the options fund's systematic volatility selling (VRP). Convexity position on IWM: long strangle with a 275 put and a 315 call, December 2026 expiry." style="display:none">Independent tail-risk volatility strategy, not linked to the options fund's systematic volatility selling (VRP). Convexity position on IWM: long strangle with a 275 put and a 315 call, December 2026 expiry.</span>
   </p>
   <div class="date-range">
-    <span data-es="Implementado: 8 de septiembre de 2026 &nbsp;→&nbsp; En curso">Implementado: 8 de septiembre de 2026 &nbsp;→&nbsp; En curso</span>
-    <span data-en="Implemented: September 8, 2026 &nbsp;→&nbsp; Ongoing" style="display:none">Implemented: September 8, 2026 &nbsp;→&nbsp; Ongoing</span>
+    <span data-es="Implementado: 8 de septiembre de 2026 &nbsp;→&nbsp; Cerrado: 16 de octubre de 2026 &nbsp;·&nbsp; 38 días">Implementado: 8 de septiembre de 2026 &nbsp;→&nbsp; Cerrado: 16 de octubre de 2026 &nbsp;·&nbsp; 38 días</span>
+    <span data-en="Implemented: September 8, 2026 &nbsp;→&nbsp; Closed: October 16, 2026 &nbsp;·&nbsp; 38 days" style="display:none">Implemented: September 8, 2026 &nbsp;→&nbsp; Closed: October 16, 2026 &nbsp;·&nbsp; 38 days</span>
   </div>
 </div>
 
 <div class="kpi-strip">
   <div class="kpi-block main">
     <div class="kpi-label"><span data-es="Retorno total de la posición">Retorno total de la posición</span><span data-en="Total position return" style="display:none">Total position return</span></div>
-    <div class="kpi-value" id="kpiTotal">—</div>
-    <div class="kpi-sub"><span data-es="vs costo de entrada">vs costo de entrada</span><span data-en="vs entry cost" style="display:none">vs entry cost</span></div>
+    <div class="kpi-value pos">+20.63%</div>
+    <div class="kpi-sub"><span data-es="vs costo de entrada 8/9/2026">vs costo de entrada 8/9/2026</span><span data-en="vs 9/8/2026 entry cost" style="display:none">vs 9/8/2026 entry cost</span></div>
   </div>
   <div class="kpi-block">
-    <div class="kpi-label"><span data-es="Variación de hoy">Variación de hoy</span><span data-en="Today's change" style="display:none">Today's change</span></div>
-    <div class="kpi-value" id="kpiHoy">—</div>
-    <div class="kpi-sub"><span data-es="vs cierre anterior">vs cierre anterior</span><span data-en="vs previous close" style="display:none">vs previous close</span></div>
+    <div class="kpi-label">Put 275 · <span data-es="venta">venta</span><span data-en="sale" style="display:none">sale</span></div>
+    <div class="kpi-value">10.75</div>
+    <div class="kpi-sub"><span data-es="por acción · cierre 16/10">por acción · cierre 16/10</span><span data-en="per share · closed 10/16" style="display:none">per share · closed 10/16</span></div>
   </div>
   <div class="kpi-block">
-    <div class="kpi-label"><span data-es="Días en la posición">Días en la posición</span><span data-en="Days in position" style="display:none">Days in position</span></div>
-    <div class="kpi-value" id="kpiDias">—</div>
-    <div class="kpi-sub"><span data-es="desde la apertura">desde la apertura</span><span data-en="since opening" style="display:none">since opening</span></div>
+    <div class="kpi-label">Call 315 · <span data-es="venta">venta</span><span data-en="sale" style="display:none">sale</span></div>
+    <div class="kpi-value">0.16</div>
+    <div class="kpi-sub"><span data-es="por acción · cierre 16/10">por acción · cierre 16/10</span><span data-en="per share · closed 10/16" style="display:none">per share · closed 10/16</span></div>
   </div>
   <div class="kpi-block">
-    <div class="kpi-label"><span data-es="Días a vencimiento">Días a vencimiento</span><span data-en="Days to expiry" style="display:none">Days to expiry</span></div>
-    <div class="kpi-value" id="kpiVto">—</div>
-    <div class="kpi-sub">18-Dic-2026</div>
+    <div class="kpi-label"><span data-es="Costo de entrada">Costo de entrada</span><span data-en="Entry cost" style="display:none">Entry cost</span></div>
+    <div class="kpi-value">9.044</div>
+    <div class="kpi-sub"><span data-es="por acción · put + call">por acción · put + call</span><span data-en="per share · put + call" style="display:none">per share · put + call</span></div>
   </div>
 </div>
 
 <main>
-  <div class="section-eyebrow"><span data-es="Evolución diaria de rendimiento">Evolución diaria de rendimiento</span><span data-en="Daily performance evolution" style="display:none">Daily performance evolution</span></div>
+  <div class="section-eyebrow"><span data-es="Evolución de la posición vs. benchmarks">Evolución de la posición vs. benchmarks</span><span data-en="Position performance vs. benchmarks" style="display:none">Position performance vs. benchmarks</span></div>
   <div class="chart-card">
     <div class="chart-header">
-      <div class="chart-title"><span data-es="Rendimiento de la posición">Rendimiento de la posición</span><span data-en="Position performance" style="display:none">Position performance</span> <em>(base 100 = 8/9/2026)</em></div>
+      <div class="chart-title"><span data-es="Performance diaria">Performance diaria</span><span data-en="Daily performance" style="display:none">Daily performance</span> <em>(base 100 = 8/9/2026)</em></div>
       <div class="legend">
-        <div class="leg"><div class="leg-dot" style="background:#4A8B6A"></div><span data-es="Valor de la posición">Valor de la posición</span><span data-en="Position value" style="display:none">Position value</span></div>
+        <div class="leg"><div class="leg-dot" style="background:#4A8B6A"></div><span data-es="Posición">Posición</span><span data-en="Position" style="display:none">Position</span></div>
+        <div class="leg"><div class="leg-dot" style="background:#2A2A38"></div>S&amp;P 500</div>
+        <div class="leg"><div class="leg-dot" style="background:#C9A96E"></div>Nasdaq-100</div>
+        <div class="leg"><div class="leg-dot" style="background:#8B3A3A"></div>IWM</div>
       </div>
     </div>
     <div class="chart-wrap"><canvas id="chart"></canvas></div>
   </div>
 
+  <div class="section-eyebrow"><span data-es="Riesgo y Sharpe ratio">Riesgo y Sharpe ratio</span><span data-en="Risk and Sharpe ratio" style="display:none">Risk and Sharpe ratio</span></div>
+  <table class="bench-table">
+    <thead>
+      <tr>
+        <th><span data-es="Métrica">Métrica</span><span data-en="Metric" style="display:none">Metric</span></th>
+        <th><span data-es="Posición">Posición</span><span data-en="Position" style="display:none">Position</span></th>
+        <th>IWM</th>
+        <th>S&amp;P 500</th>
+        <th>Nasdaq-100</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr class="highlight">
+        <td class="label"><span data-es="Retorno total">Retorno total</span><span data-en="Total return" style="display:none">Total return</span></td>
+        <td class="pos">+20.63%</td>
+        <td class="neg">-8.21%</td>
+        <td class="neg">-0.16%</td>
+        <td class="neg">-1.18%</td>
+      </tr>
+      <tr>
+        <td class="label"><span data-es="Volatilidad anualizada">Volatilidad anualizada</span><span data-en="Annualized volatility" style="display:none">Annualized volatility</span></td>
+        <td>183.83%</td>
+        <td>15.81%</td>
+        <td>11.06%</td>
+        <td>19.04%</td>
+      </tr>
+      <tr class="highlight">
+        <td class="label">Sharpe ratio <span style="color:var(--muted);font-size:0.7rem">(rf=0)</span></td>
+        <td class="pos">1.94</td>
+        <td class="neg">-5.85</td>
+        <td class="neg">-0.11</td>
+        <td class="neg">-0.59</td>
+      </tr>
+      <tr>
+        <td class="label">Sharpe ratio <span style="color:var(--muted);font-size:0.7rem">(rf≈4.3% a.)</span></td>
+        <td class="pos">1.92</td>
+        <td class="neg">-6.12</td>
+        <td class="neg">-0.49</td>
+        <td class="neg">-0.82</td>
+      </tr>
+      <tr class="highlight">
+        <td class="label"><span data-es="Máximo drawdown">Máximo drawdown</span><span data-en="Maximum drawdown" style="display:none">Maximum drawdown</span></td>
+        <td>-26.52%</td>
+        <td>-8.21%</td>
+        <td>-1.85%</td>
+        <td>-6.12%</td>
+      </tr>
+    </tbody>
+  </table>
+
   <p class="disclaimer">
-    <span data-es="Rendimientos pasados no garantizan resultados futuros. La posición se encuentra actualmente abierta; el rendimiento mostrado es a precios de mercado (mark-to-market) usando el punto medio entre bid y ask de cada pata, actualizado diariamente. Por tratarse de una posición en curso, no se detallan strikes, primas de entrada ni tamaño de la posición. El rendimiento mostrado es antes de comisiones de broker y otros costos de transacción.">Rendimientos pasados no garantizan resultados futuros. La posición se encuentra actualmente abierta; el rendimiento mostrado es a precios de mercado (mark-to-market) usando el punto medio entre bid y ask de cada pata, actualizado diariamente. Por tratarse de una posición en curso, no se detallan strikes, primas de entrada ni tamaño de la posición. El rendimiento mostrado es antes de comisiones de broker y otros costos de transacción.</span>
-    <span data-en="Past performance does not guarantee future results. The position is currently open; performance shown is mark-to-market using the bid-ask midpoint of each leg, updated daily. As this is an ongoing position, strikes, entry premiums, and position size are not disclosed. Performance shown is before broker commissions and other transaction costs." style="display:none">Past performance does not guarantee future results. The position is currently open; performance shown is mark-to-market using the bid-ask midpoint of each leg, updated daily. As this is an ongoing position, strikes, entry premiums, and position size are not disclosed. Performance shown is before broker commissions and other transaction costs.</span>
+    <span data-es="Rendimientos pasados no garantizan resultados futuros. La información de performance mostrada corresponde a una operación efectivamente implementada en cuentas de clientes de Nomad Capital, comunicada oportunamente al momento de su ejecución y cierre. El rendimiento mostrado es antes de comisiones de broker y otros costos de transacción. La posición es un long strangle sobre IWM (put 275 / call 315, vencimiento 18/12/2026); los precios de opciones se expresan por acción (cada contrato cubre 100 acciones). Serie diaria de la posición valuada a precios de mercado (punto medio entre bid y ask de cada pata) al cierre de cada rueda, base 100 = costo de entrada del 8/9/2026; el último punto corresponde al precio de venta efectivo de ambas patas (put 10.75, call 0.16). La serie omite las ruedas sin registro entre el 5/10 y el 13/10. El Sharpe ratio se calculó sobre retornos diarios anualizados (√252); se muestra con tasa libre de riesgo 0% y con una aproximación de 4.3% anual (T-Bill de corto plazo). La volatilidad de la posición es elevada por tratarse de una posición larga en opciones de bajo costo relativo. Benchmarks: IWM (subyacente), S&P 500 (^GSPC) y Nasdaq-100 (representado por el ETF QQQ), rebasados a 100 en la misma fecha de inicio; fuente FMP, precios de cierre 8/9/2026–16/10/2026.">Rendimientos pasados no garantizan resultados futuros. La información de performance mostrada corresponde a una operación efectivamente implementada en cuentas de clientes de Nomad Capital, comunicada oportunamente al momento de su ejecución y cierre. El rendimiento mostrado es antes de comisiones de broker y otros costos de transacción. La posición es un long strangle sobre IWM (put 275 / call 315, vencimiento 18/12/2026); los precios de opciones se expresan por acción (cada contrato cubre 100 acciones). Serie diaria de la posición valuada a precios de mercado (punto medio entre bid y ask de cada pata) al cierre de cada rueda, base 100 = costo de entrada del 8/9/2026; el último punto corresponde al precio de venta efectivo de ambas patas (put 10.75, call 0.16). La serie omite las ruedas sin registro entre el 5/10 y el 13/10. El Sharpe ratio se calculó sobre retornos diarios anualizados (√252); se muestra con tasa libre de riesgo 0% y con una aproximación de 4.3% anual (T-Bill de corto plazo). La volatilidad de la posición es elevada por tratarse de una posición larga en opciones de bajo costo relativo. Benchmarks: IWM (subyacente), S&P 500 (^GSPC) y Nasdaq-100 (representado por el ETF QQQ), rebasados a 100 en la misma fecha de inicio; fuente FMP, precios de cierre 8/9/2026–16/10/2026.</span><span data-en="Past performance does not guarantee future results. The performance information shown corresponds to a trade actually implemented in Nomad Capital client accounts, communicated in a timely manner at the time of its execution and closing. The performance shown is before broker commissions and other transaction costs. The position is a long strangle on IWM (275 put / 315 call, expiring 12/18/2026); option prices are expressed per share (each contract covers 100 shares). Daily position series valued at market prices (bid-ask midpoint of each leg) at each session's close, base 100 = 9/8/2026 entry cost; the last point corresponds to the actual sale price of both legs (put 10.75, call 0.16). The series omits sessions with no record between 10/5 and 10/13. The Sharpe ratio was calculated on annualized daily returns (√252); shown with a 0% risk-free rate and with an approximation of 4.3% annual (short-term T-Bill). The position's volatility is high because it is a long options position with a low relative cost. Benchmarks: IWM (underlying), S&P 500 (^GSPC) and Nasdaq-100 (represented by the QQQ ETF), rebased to 100 on the same start date; source FMP, closing prices 9/8/2026-10/16/2026." style="display:none">Past performance does not guarantee future results. The performance information shown corresponds to a trade actually implemented in Nomad Capital client accounts, communicated in a timely manner at the time of its execution and closing. The performance shown is before broker commissions and other transaction costs. The position is a long strangle on IWM (275 put / 315 call, expiring 12/18/2026); option prices are expressed per share (each contract covers 100 shares). Daily position series valued at market prices (bid-ask midpoint of each leg) at each session's close, base 100 = 9/8/2026 entry cost; the last point corresponds to the actual sale price of both legs (put 10.75, call 0.16). The series omits sessions with no record between 10/5 and 10/13. The Sharpe ratio was calculated on annualized daily returns (√252); shown with a 0% risk-free rate and with an approximation of 4.3% annual (short-term T-Bill). The position's volatility is high because it is a long options position with a low relative cost. Benchmarks: IWM (underlying), S&P 500 (^GSPC) and Nasdaq-100 (represented by the QQQ ETF), rebased to 100 on the same start date; source FMP, closing prices 9/8/2026-10/16/2026.</span>
   </p>
 </main>
 
@@ -187,128 +235,69 @@ footer { background: var(--navy2); border-top: 1px solid rgba(232,213,163,0.08);
   <div class="footer-left">Nomad Capital</div>
   <div class="footer-right">
     CNV Licencia N°1073 · nomadcapital.com.ar<br>
-    <span data-es="Trade abierto · Documento de uso interno">Trade abierto · Documento de uso interno</span><span data-en="Open trade · Internal use document" style="display:none">Open trade · Internal use document</span>
+    <span data-es="Trade cerrado · Documento de uso interno">Trade cerrado · Documento de uso interno</span><span data-en="Closed trade · Internal use document" style="display:none">Closed trade · Internal use document</span>
   </div>
 </footer>
 
 <script>
-const SUPABASE_URL = "https://mtdezblfhjiuvkleekbz.supabase.co";
-const SUPABASE_KEY = "sb_publishable_fA7oaY8dUrNXuL3Xz8uhUw_fU9tTHah";
-const ESTRATEGIA = "tail_risk_iwm_dic2026";
+const labels = ["09/08", "09/09", "09/10", "09/11", "09/14", "09/15", "09/16", "09/17", "09/18", "09/21", "09/22", "09/23", "09/24", "09/25", "09/28", "09/29", "09/30", "10/01", "10/02", "10/05", "10/13", "10/14", "10/15", "10/16"];
+const portfolio = [100.0, 102.167, 107.972, 97.91, 95.754, 97.192, 99.182, 88.291, 87.572, 82.817, 80.44, 90.06, 93.819, 88.512, 93.432, 96.031, 98.905, 96.196, 85.305, 79.334, 88.788, 115.491, 93.266, 120.632];
+const spx = [100.0, 99.516, 98.934, 99.784, 99.302, 98.856, 98.414, 99.534, 99.7, 101.188, 101.187, 100.424, 100.399, 100.911, 100.133, 99.965, 99.714, 99.908, 100.641, 101.309, 101.719, 100.592, 100.919, 99.84];
+const ndx = [100.0, 99.715, 98.654, 99.516, 98.722, 98.076, 98.101, 99.8, 100.43, 103.217, 104.051, 103.181, 103.166, 103.639, 102.529, 102.724, 102.98, 103.295, 104.346, 105.268, 103.509, 101.474, 101.342, 98.822];
+const iwm = [100.0, 98.632, 97.635, 98.038, 97.706, 96.766, 96.352, 96.864, 96.413, 96.915, 97.468, 95.673, 95.585, 95.69, 95.028, 94.686, 94.305, 94.689, 95.537, 96.169, 93.902, 92.093, 93.352, 91.787];
 
-const FECHA_APERTURA = new Date(2026, 8, 8);
-const FECHA_VENCIMIENTO = new Date(2026, 11, 18);
-
-let chartInstance = null;
-
-async function cargarDatos() {
-  const url = `${SUPABASE_URL}/rest/v1/tail_risk_tracker?select=fecha,pnl_pct&estrategia=eq.${ESTRATEGIA}&order=fecha.asc`;
-  const resp = await fetch(url, {
-    headers: {
-      "apikey": SUPABASE_KEY,
-      "Authorization": `Bearer ${SUPABASE_KEY}`
-    }
-  });
-  if (!resp.ok) throw new Error("No se pudo conectar a Supabase (" + resp.status + ")");
-  const filas = await resp.json();
-
-  if (!filas || filas.length === 0) {
-    return { labels: [], portfolio: [] };
-  }
-
-  const labels = filas.map(r => {
-    const [y, m, d] = r.fecha.split('-');
-    return `${m}/${d}`;
-  });
-  const portfolio = filas.map(r => 100 + parseFloat(r.pnl_pct));
-
-  return { labels, portfolio };
-}
-
-function actualizarKPIs(portfolio) {
-  const hoy = new Date();
-  const diasEnPosicion = Math.max(0, Math.round((hoy - FECHA_APERTURA) / 86400000));
-  const diasAVencimiento = Math.max(0, Math.round((FECHA_VENCIMIENTO - hoy) / 86400000));
-
-  const retornoTotal = portfolio[portfolio.length - 1] - 100;
-  // Con una sola fila (día de apertura), la variación de hoy ES el retorno 
-  // total -- ambos representan el mismo movimiento (de costo_entrada al 
-  // primer mark del día). Recién a partir de la 2da fila tiene sentido 
-  // comparar contra el cierre del día anterior.
-  const retornoHoy = portfolio.length > 1
-    ? ((portfolio[portfolio.length - 1] / portfolio[portfolio.length - 2]) - 1) * 100
-    : retornoTotal;
-
-  const elTotal = document.getElementById('kpiTotal');
-  elTotal.textContent = (retornoTotal >= 0 ? '+' : '') + retornoTotal.toFixed(2) + '%';
-  elTotal.className = 'kpi-value ' + (retornoTotal >= 0 ? 'pos' : 'neg');
-
-  const elHoy = document.getElementById('kpiHoy');
-  elHoy.textContent = (retornoHoy >= 0 ? '+' : '') + retornoHoy.toFixed(2) + '%';
-  elHoy.className = 'kpi-value ' + (retornoHoy >= 0 ? 'pos' : 'neg');
-
-  document.getElementById('kpiDias').textContent = diasEnPosicion;
-  document.getElementById('kpiVto').textContent = diasAVencimiento;
-
-  const badge = document.getElementById('statusBadge');
-  const color = retornoTotal >= 0 ? '#4A8B6A' : '#8B3A3A';
-  badge.style.color = color;
-  badge.style.borderColor = color + '66';
-  badge.querySelector('.status-dot').style.background = color;
-}
-
-function dibujarChart(labels, portfolio) {
-  if (chartInstance) chartInstance.destroy();
-  chartInstance = new Chart(document.getElementById('chart').getContext('2d'), {
-    type: 'line',
-    data: {
-      labels,
-      datasets: [
-        {
-          label: 'Posición',
-          data: portfolio,
-          borderColor: '#4A8B6A',
-          backgroundColor: 'rgba(74,139,106,0.08)',
-          borderWidth: 2.5, pointRadius: 0, pointHoverRadius: 5, fill: true, tension: 0.3
-        }
-      ]
-    },
-    options: {
-      responsive: true, maintainAspectRatio: false,
-      interaction: { mode: 'index', intersect: false },
-      plugins: {
-        legend: { display: false },
-        tooltip: {
-          callbacks: {
-            label: c => `${c.dataset.label}: ${c.parsed.y.toFixed(2)} (${(c.parsed.y-100)>=0?'+':''}${(c.parsed.y-100).toFixed(2)}%)`
-          }
-        }
+new Chart(document.getElementById('chart').getContext('2d'), {
+  type: 'line',
+  data: {
+    labels,
+    datasets: [
+      {
+        label: 'Posición',
+        data: portfolio,
+        borderColor: '#4A8B6A',
+        backgroundColor: 'rgba(74,139,106,0.08)',
+        borderWidth: 2.5, pointRadius: 0, pointHoverRadius: 5, fill: true, tension: 0.3
       },
-      scales: {
-        x: { grid: { display: false }, ticks: { color: '#6a6a5a', font: { family: "'Outfit', sans-serif", size: 11 }, maxTicksLimit: 10 } },
-        y: { grid: { color: 'rgba(0,0,0,0.04)' }, ticks: { color: '#6a6a5a', font: { family: "'Outfit', sans-serif", size: 11 }, callback: v => v.toFixed(1) } }
+      {
+        label: 'S&P 500',
+        data: spx,
+        borderColor: '#2A2A38',
+        backgroundColor: 'transparent',
+        borderWidth: 1.5, pointRadius: 0, pointHoverRadius: 4, fill: false, tension: 0.3, borderDash: [4,3]
+      },
+      {
+        label: 'IWM',
+        data: iwm,
+        borderColor: '#8B3A3A',
+        backgroundColor: 'transparent',
+        borderWidth: 1.5, pointRadius: 0, pointHoverRadius: 4, fill: false, tension: 0.3, borderDash: [4,3]
+      },
+      {
+        label: 'Nasdaq-100',
+        data: ndx,
+        borderColor: '#C9A96E',
+        backgroundColor: 'transparent',
+        borderWidth: 1.5, pointRadius: 0, pointHoverRadius: 4, fill: false, tension: 0.3, borderDash: [4,3]
       }
+    ]
+  },
+  options: {
+    responsive: true, maintainAspectRatio: false,
+    interaction: { mode: 'index', intersect: false },
+    plugins: {
+      legend: { display: false },
+      tooltip: {
+        callbacks: {
+          label: c => `${c.dataset.label}: ${c.parsed.y.toFixed(1)} (${(c.parsed.y-100)>=0?'+':''}${(c.parsed.y-100).toFixed(2)}%)`
+        }
+      }
+    },
+    scales: {
+      x: { grid: { display: false }, ticks: { color: '#6a6a5a', font: { family: "'Outfit', sans-serif", size: 11 }, maxTicksLimit: 10 } },
+      y: { grid: { color: 'rgba(0,0,0,0.04)' }, ticks: { color: '#6a6a5a', font: { family: "'Outfit', sans-serif", size: 11 }, callback: v => v.toFixed(0) } }
     }
-  });
-}
-
-cargarDatos()
-  .then(({ labels, portfolio }) => {
-    if (portfolio.length === 0) {
-      document.getElementById('kpiTotal').textContent = 'Sin datos';
-      return;
-    }
-    actualizarKPIs(portfolio);
-    // Punto sintético de apertura (100) al principio del grafico -- da un 
-    // origen visual claro incluso cuando todavia hay pocos datos reales.
-    const labelsConApertura = ['Apertura', ...labels];
-    const portfolioConApertura = [100, ...portfolio];
-    dibujarChart(labelsConApertura, portfolioConApertura);
-  })
-  .catch(err => {
-    console.error('Error cargando datos del tracker:', err);
-    document.getElementById('kpiTotal').textContent = 'Error';
-  });
+  }
+});
 
 window.currentLang = (new URLSearchParams(window.location.search).get('lang') || localStorage.getItem('nc_lang') || 'es');
 
